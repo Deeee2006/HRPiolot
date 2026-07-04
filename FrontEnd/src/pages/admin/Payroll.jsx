@@ -44,9 +44,9 @@ const AdminPayroll = () => {
 
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-md bg-blue-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
               <FaDollarSign className="text-blue-600" size={17} />
             </div>
             <div>
@@ -55,10 +55,15 @@ const AdminPayroll = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-4">
+<<<<<<< HEAD
             <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center shrink-0">
               <FaChartBar className="text-emerald-600" size={17} />
+=======
+            <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0">
+              <FaChartLine className="text-emerald-600" size={17} />
+>>>>>>> 538f960fe0d377671686f96df0e0381a06e50f4f
             </div>
             <div>
               <p className="text-xs text-gray-500 font-medium">Average Salary</p>
@@ -66,9 +71,9 @@ const AdminPayroll = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-md bg-purple-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center shrink-0">
               <FaUsers className="text-purple-600" size={17} />
             </div>
             <div>
@@ -80,7 +85,7 @@ const AdminPayroll = () => {
       </div>
 
       {/* Salary Table */}
-      <Card className="p-6">
+      <Card>
         <h3 className="text-base font-semibold text-gray-900 mb-4">Salary Overview</h3>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -99,7 +104,7 @@ const AdminPayroll = () => {
                 <tr key={employee.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-medium text-sm shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 font-medium text-sm shrink-0">
                         {employee.name.charAt(0)}
                       </div>
                       <div>
@@ -142,7 +147,7 @@ const AdminPayroll = () => {
       </Card>
 
       {/* Department Breakdown */}
-      <Card className="p-6">
+      <Card>
         <h3 className="text-base font-semibold text-gray-900 mb-4">Department Salary Breakdown</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {['Engineering', 'Marketing', 'Finance', 'Human Resources'].map((dept) => {

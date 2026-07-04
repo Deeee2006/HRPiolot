@@ -1,4 +1,3 @@
-import React from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
 
@@ -18,7 +17,7 @@ const DashboardLayout = ({ children, title = 'Overview' }) => {
 
         {/* Scrollable Main Body */}
         <main className="flex-1 overflow-y-auto focus:outline-none">
-          <div className="max-w-7xl mx-auto w-full px-6 py-8 animate-fadeInUp">
+          <div className="max-w-7xl mx-auto w-full px-6 py-6">
             {children}
           </div>
         </main>

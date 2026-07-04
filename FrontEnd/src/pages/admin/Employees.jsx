@@ -3,8 +3,7 @@ import { useEmployee } from '../../context/EmployeeContext';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Badge from '../../components/Badge';
-import Input from '../../components/Input';
-import { FaSearch, FaUser, FaEnvelope, FaBriefcase, FaCalendar, FaMapMarkerAlt, FaFilter, FaTimes } from 'react-icons/fa';
+import { FaSearch, FaUser, FaEnvelope, FaFilter, FaTimes } from 'react-icons/fa';
 
 const Employees = () => {
   const { employees, setSelectedEmployee } = useEmployee();
@@ -36,15 +35,15 @@ const Employees = () => {
       </div>
 
       {/* Search & Filter + Table */}
-      <Card className="p-6">
+      <Card>
         <div className="flex flex-col sm:flex-row gap-3 mb-6">
           <div className="flex-1 relative">
-            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
+            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={14} />
             <input
               placeholder="Search by name, email, or ID..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="h-9 w-full pl-9 pr-3 rounded-md bg-white border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all"
+              className="h-10 w-full pl-9 pr-3 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all"
             />
           </div>
           <div className="relative">
@@ -52,7 +51,7 @@ const Employees = () => {
             <select
               value={selectedDepartment}
               onChange={(e) => setSelectedDepartment(e.target.value)}
-              className="h-9 pl-9 pr-8 rounded-md bg-white border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all appearance-none minimal-select min-w-40"
+              className="h-10 pl-9 pr-8 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all appearance-none minimal-select min-w-40"
             >
               {departments.map(dept => (
                 <option key={dept} value={dept}>{dept}</option>
@@ -78,7 +77,7 @@ const Employees = () => {
                 <tr key={employee.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-medium text-sm shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 font-medium text-sm shrink-0">
                         {employee.name.charAt(0)}
                       </div>
                       <div>
@@ -90,24 +89,9 @@ const Employees = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="py-3 px-4 text-sm text-gray-600">
-                    <div className="flex items-center gap-1.5">
-                      <FaMapMarkerAlt size={12} className="text-gray-400 shrink-0" />
-                      {employee.department}
-                    </div>
-                  </td>
-                  <td className="py-3 px-4 text-sm text-gray-600">
-                    <div className="flex items-center gap-1.5">
-                      <FaBriefcase size={12} className="text-gray-400 shrink-0" />
-                      {employee.position}
-                    </div>
-                  </td>
-                  <td className="py-3 px-4 text-sm text-gray-600">
-                    <div className="flex items-center gap-1.5">
-                      <FaCalendar size={12} className="text-gray-400 shrink-0" />
-                      {employee.joinDate}
-                    </div>
-                  </td>
+                  <td className="py-3 px-4 text-sm text-gray-600">{employee.department}</td>
+                  <td className="py-3 px-4 text-sm text-gray-600">{employee.position}</td>
+                  <td className="py-3 px-4 text-sm text-gray-600">{employee.joinDate}</td>
                   <td className="py-3 px-4">
                     <Badge variant="success">Active</Badge>
                   </td>
@@ -145,7 +129,7 @@ const Employees = () => {
         {departments.filter(d => d !== 'All').map((dept) => {
           const count = employees.filter(e => e.department === dept).length;
           return (
-            <Card key={dept} className="p-4 text-center">
+            <Card key={dept} className="text-center">
               <p className="text-2xl font-semibold text-gray-900">{count}</p>
               <p className="text-xs text-gray-500 font-medium mt-0.5">{dept}</p>
             </Card>

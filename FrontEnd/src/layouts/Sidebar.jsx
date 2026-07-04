@@ -87,7 +87,7 @@ const Sidebar = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsMobileOpen(false)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-md transition-all duration-200 group ${
+                className={`flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200 group ${
                   active
                     ? 'bg-teal-50 text-teal-700'
                     : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'

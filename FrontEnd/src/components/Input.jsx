@@ -58,23 +58,23 @@ const Input = ({ label, error, className = '', icon, floating = false, rightElem
   }
 
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-2">
       {label && (
-        <label className="text-sm font-semibold text-gray-700">
+        <label className="text-sm font-medium text-gray-700">
           {label}
         </label>
       )}
       <div className="relative">
         {icon && (
-          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 flex items-center">
+          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 flex items-center pointer-events-none">
             {icon}
           </div>
         )}
         <input
-          className={`h-10 w-full px-3 rounded-md bg-white border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none ring-2 ring-transparent focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 ${
-            icon ? 'pl-9' : ''
+          className={`h-10 w-full rounded-md bg-white border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none ring-2 ring-transparent focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 px-3 ${
+            icon ? 'pl-10' : ''
           } ${
-            rightElement ? 'pr-9' : ''
+            rightElement ? 'pr-10' : ''
           } ${
             error ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : ''
           } ${className}`}

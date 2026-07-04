@@ -30,8 +30,11 @@ const AppRoutes = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-purple-50 via-pink-50 to-blue-50 flex items-center justify-center">
-        <div className="text-purple-600 text-lg font-medium">Loading...</div>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-gray-200 animate-pulse" />
+          <p className="text-sm text-gray-500">Loading...</p>
+        </div>
       </div>
     );
   }

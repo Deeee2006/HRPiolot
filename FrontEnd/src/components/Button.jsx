@@ -1,5 +1,5 @@
 const Button = ({ children, variant = 'primary', size = 'md', className = '', disabled = false, loading = false, icon, ...props }) => {
-  const baseStyles = 'inline-flex items-center justify-center gap-2 font-medium rounded-md transition-all duration-200 cursor-pointer';
+  const baseStyles = 'inline-flex items-center justify-center gap-2 font-medium rounded-md transition-all duration-200 cursor-pointer active:scale-[0.97]';
 
   const variants = {
     primary: 'bg-blue-600 text-white hover:bg-blue-700',

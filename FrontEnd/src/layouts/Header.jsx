@@ -58,7 +58,7 @@ const Header = ({ title }) => {
                 {user?.role || 'No role'}
               </p>
             </div>
-          </div>
+          </div>a
         </div>
       </div>
     </header>

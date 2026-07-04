@@ -68,7 +68,7 @@ const Login = () => {
             Your all-in-one HR management solution. Streamline operations, empower your team.
           </p>
           <div className="space-y-4">
-            {features.map((feature, i) => (
+            {features.map((feature) => (
               <div
                 key={feature.text}
                 className="flex items-center gap-3 text-gray-700"
@@ -100,56 +100,52 @@ const Login = () => {
             <h1 className="text-2xl font-bold text-gray-900">HRPilot</h1>
           </div>
 
-          <div className="auth-card p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
             <div className="mb-6">
               <h2 className="text-xl font-semibold text-gray-900">Welcome back</h2>
-              <p className="text-gray-600 text-sm mt-1">Sign in to your account to continue</p>
+              <p className="text-gray-500 text-sm mt-1">Sign in to your account to continue</p>
             </div>
 
             {errors.form && (
-              <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm font-medium flex items-center gap-2.5 animate-shake">
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm font-medium flex items-center gap-2.5 animate-shake">
                 <span>{errors.form}</span>
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
-              <div>
-                <Input
-                  label="Email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  error={errors.email}
-                  icon={<LuMail size={16} />}
-                  floating
-                  autoComplete="email"
-                />
-              </div>
-              <div>
-                <Input
-                  label="Password"
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  value={formData.password}
-                  onChange={handleChange}
-                  error={errors.password}
-                  icon={<LuLock size={16} />}
-                  floating
-                  autoComplete="current-password"
-                  rightElement={
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="text-gray-400 hover:text-gray-600 transition-colors p-1"
-                      tabIndex={-1}
-                      aria-label={showPassword ? 'Hide password' : 'Show password'}
-                    >
-                      {showPassword ? <LuEyeOff size={17} /> : <LuEye size={17} />}
-                    </button>
-                  }
-                />
-              </div>
+              <Input
+                label="Email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                error={errors.email}
+                icon={<LuMail size={16} />}
+                floating
+                autoComplete="email"
+              />
+              <Input
+                label="Password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                value={formData.password}
+                onChange={handleChange}
+                error={errors.password}
+                icon={<LuLock size={16} />}
+                floating
+                autoComplete="current-password"
+                rightElement={
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors p-1"
+                    tabIndex={-1}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  >
+                    {showPassword ? <LuEyeOff size={17} /> : <LuEye size={17} />}
+                  </button>
+                }
+              />
 
               <div className="flex items-center justify-between text-sm">
                 <label className="flex items-center gap-2 cursor-pointer group">
@@ -159,30 +155,28 @@ const Login = () => {
                     onChange={(e) => setRememberMe(e.target.checked)}
                     className="minimal-checkbox"
                   />
-                  <span className="text-gray-600 group-hover:text-gray-800 transition-colors font-medium">
+                  <span className="text-gray-500 group-hover:text-gray-700 transition-colors font-medium">
                     Remember me
                   </span>
                 </label>
                 <button
                   type="button"
-                  className="text-gray-600 hover:text-gray-800 font-medium transition-colors"
+                  className="text-gray-500 hover:text-gray-700 font-medium transition-colors"
                 >
                   Forgot password?
                 </button>
               </div>
 
-              <div>
-                <Button
-                  type="submit"
-                  className="w-full"
-                  size="md"
-                  loading={isLoading}
-                  disabled={isLoading}
-                >
-                  {isLoading ? 'Signing in...' : 'Sign In'}
-                  {!isLoading && <LuArrowRight size={18} />}
-                </Button>
-              </div>
+              <Button
+                type="submit"
+                className="w-full"
+                size="md"
+                loading={isLoading}
+                disabled={isLoading}
+              >
+                {isLoading ? 'Signing in...' : 'Sign In'}
+                {!isLoading && <LuArrowRight size={18} />}
+              </Button>
             </form>
 
             <div className="mt-6">
@@ -201,35 +195,33 @@ const Login = () => {
               </div>
             </div>
 
-            <p className="text-center text-sm mt-2">
+            <p className="text-center text-sm mt-6 text-gray-500">
               Don't have an account?{' '}
-              <Link to="/signup" className="font-semibold text-gray-700 hover:text-gray-900 transition-colors">
+              <Link to="/signup" className="font-semibold text-gray-900 hover:text-gray-700 transition-colors">
                 Sign Up
               </Link>
             </p>
           </div>
 
           {/* Demo Credentials */}
-          <div className="mt-6 pt-4 border-t border-gray-200 auth-card p-4">
-            <p className="text-xs text-gray-600 font-semibold mb-2.5 flex items-center gap-1.5">
-              Quick access
-            </p>
-            <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
+            <p className="text-xs text-gray-500 font-medium mb-3">Quick access</p>
+            <div className="flex gap-3">
               <button
                 type="button"
                 onClick={() => fillDemo('john.doe@company.com')}
-                className="w-full text-left text-xs text-gray-600 hover:text-gray-800 hover:bg-gray-50 p-3 rounded-md transition-all font-medium border border-gray-200 hover:border-gray-300"
+                className="flex-1 text-left p-3 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all"
               >
-                <span className="text-gray-800 font-semibold">Admin</span>
-                <br />john.doe@company.com
+                <p className="text-sm font-semibold text-gray-900">Admin</p>
+                <p className="text-xs text-gray-500 mt-0.5">john.doe@company.com</p>
               </button>
               <button
                 type="button"
                 onClick={() => fillDemo('jane.smith@company.com')}
-                className="w-full text-left text-xs text-gray-600 hover:text-gray-800 hover:bg-gray-50 p-3 rounded-md transition-all font-medium border border-gray-200 hover:border-gray-300"
+                className="flex-1 text-left p-3 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all"
               >
-                <span className="text-gray-800 font-semibold">Employee</span>
-                <br />jane.smith@company.com
+                <p className="text-sm font-semibold text-gray-900">Employee</p>
+                <p className="text-xs text-gray-500 mt-0.5">jane.smith@company.com</p>
               </button>
             </div>
           </div>

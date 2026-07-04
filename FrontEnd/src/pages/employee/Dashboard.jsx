@@ -57,7 +57,7 @@ const EmployeeDashboard = () => {
           <h2 className="text-xl font-semibold text-gray-900">Welcome back, {user?.name?.split(' ')[0]}!</h2>
           <p className="text-sm text-gray-500 mt-0.5">Here's what's happening today.</p>
         </div>
-        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-emerald-50 rounded-md border border-emerald-200">
+        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-emerald-50 rounded-lg border border-emerald-200">
           <span className="w-2 h-2 rounded-full bg-emerald-500" />
           <span className="text-xs font-medium text-emerald-700">Active</span>
         </div>
@@ -68,10 +68,10 @@ const EmployeeDashboard = () => {
         {cards.map((card, index) => (
           <Card
             key={index}
-            className="p-4 flex flex-col gap-3 cursor-pointer hover:border-gray-300 hover:shadow-sm transition-all duration-200 group"
+            className="flex flex-col gap-3 cursor-pointer group"
             onClick={card.onClick}
           >
-            <div className={`w-10 h-10 rounded-md ${card.color} flex items-center justify-center text-white shrink-0`}>
+            <div className={`w-10 h-10 rounded-lg ${card.color} flex items-center justify-center text-white shrink-0`}>
               <card.icon size={18} />
             </div>
             <div>
@@ -87,7 +87,7 @@ const EmployeeDashboard = () => {
 
       {/* Activity + Stats */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6">
+        <Card>
           <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <FaClock size={15} className="text-gray-400" />
             Recent Activity
@@ -95,7 +95,7 @@ const EmployeeDashboard = () => {
           <div className="flex flex-col gap-2">
             {leaveReqs.length > 0 ? (
               leaveReqs.slice(-3).reverse().map((req) => (
-                <div key={req.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
+                <div key={req.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                   <div>
                     <p className="text-sm font-medium text-gray-900">{req.type} requested</p>
                     <p className="text-xs text-gray-500">{req.startDate}</p>
@@ -111,7 +111,7 @@ const EmployeeDashboard = () => {
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card>
           <h3 className="text-base font-semibold text-gray-900 mb-4">Quick Stats</h3>
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between p-4 bg-emerald-50 rounded-lg border border-emerald-200">
