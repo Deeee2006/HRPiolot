@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { BrowserRouter } from 'react-router-dom';
-import RootRoutes from './routes';
-=======
 import { Routes, Route, Navigate } from 'react-router-dom'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
@@ -21,19 +17,8 @@ function App() {
   const { session, loading } = useAuth()
 
   if (loading) return <p className="text-center mt-8">Loading...</p>
->>>>>>> f65aa81 (Add authentication and dashboard pages)
 
-function App() {
   return (
-<<<<<<< HEAD
-    <BrowserRouter>
-      <RootRoutes />
-    </BrowserRouter>
-  );
-}
-
-export default App;
-=======
     <Routes>
       <Route path="/signup" element={session ? <Navigate to="/dashboard" /> : <SignUp />} />
       <Route path="/signin" element={session ? <Navigate to="/dashboard" /> : <SignIn />} />
@@ -44,4 +29,3 @@ export default App;
 }
 
 export default App
->>>>>>> f65aa81 (Add authentication and dashboard pages)
