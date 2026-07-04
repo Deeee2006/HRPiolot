@@ -51,40 +51,45 @@ const EmployeeDashboard = () => {
 
   return (
     <div className="flex flex-col gap-6">
+      {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-semibold text-gray-900">Welcome back, {user?.name?.split(' ')[0]}!</h2>
-          <p className="text-gray-600 text-sm">Here's what's happening today.</p>
+          <p className="text-sm text-gray-500 mt-0.5">Here's what's happening today.</p>
         </div>
-        <div className="hidden sm:flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-md border border-gray-200">
+        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-emerald-50 rounded-md border border-emerald-200">
           <span className="w-2 h-2 rounded-full bg-emerald-500" />
-          <span className="text-xs font-medium text-emerald-600">Active</span>
+          <span className="text-xs font-medium text-emerald-700">Active</span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Quick Navigation Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {cards.map((card, index) => (
           <Card
             key={index}
-            className="h-full p-4 rounded-lg flex flex-col justify-between group cursor-pointer hover:border-gray-300 transition-all duration-200"
+            className="p-4 flex flex-col gap-3 cursor-pointer hover:border-gray-300 hover:shadow-sm transition-all duration-200 group"
             onClick={card.onClick}
           >
-            <div className={`w-11 h-11 rounded-md ${card.color} flex items-center justify-center text-white`}>
-              <card.icon size={20} />
+            <div className={`w-10 h-10 rounded-md ${card.color} flex items-center justify-center text-white shrink-0`}>
+              <card.icon size={18} />
             </div>
-            <h3 className="text-base font-semibold text-gray-900">{card.title}</h3>
-            <p className="text-xs text-gray-600">{card.description}</p>
-            <div className="flex items-center gap-1 text-xs font-medium text-gray-500 group-hover:text-gray-700 transition-colors">
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900">{card.title}</h3>
+              <p className="text-xs text-gray-500 mt-0.5">{card.description}</p>
+            </div>
+            <div className="flex items-center gap-1 text-xs font-medium text-gray-400 group-hover:text-blue-600 transition-colors">
               Open <FaArrowRight size={10} />
             </div>
           </Card>
         ))}
       </div>
 
+      {/* Activity + Stats */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
-          <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2">
-            <FaClock size={16} />
+        <Card className="p-6">
+          <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
+            <FaClock size={15} className="text-gray-400" />
             Recent Activity
           </h3>
           <div className="flex flex-col gap-2">
@@ -101,34 +106,34 @@ const EmployeeDashboard = () => {
                 </div>
               ))
             ) : (
-              <p className="text-sm text-gray-500 text-center py-6">No recent activity</p>
+              <p className="text-sm text-gray-500 text-center py-8">No recent activity</p>
             )}
           </div>
         </Card>
 
-        <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
-          <h3 className="text-base font-semibold text-gray-900">Quick Stats</h3>
+        <Card className="p-6">
+          <h3 className="text-base font-semibold text-gray-900 mb-4">Quick Stats</h3>
           <div className="flex flex-col gap-3">
-            <div className="flex items-center justify-between p-4 bg-emerald-50 rounded-md border border-emerald-200">
+            <div className="flex items-center justify-between p-4 bg-emerald-50 rounded-lg border border-emerald-200">
               <div>
-                <span className="text-sm font-medium text-emerald-800">Present Days</span>
-                <p className="text-xs text-emerald-600">Total records</p>
+                <p className="text-sm font-semibold text-emerald-800">Present Days</p>
+                <p className="text-xs text-emerald-600 mt-0.5">Total records</p>
               </div>
-              <span className="text-xl font-semibold text-emerald-600">{presentCount}</span>
+              <span className="text-2xl font-bold text-emerald-600">{presentCount}</span>
             </div>
-            <div className="flex items-center justify-between p-4 bg-red-50 rounded-md border border-red-200">
+            <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
               <div>
-                <span className="text-sm font-medium text-red-800">Absent Days</span>
-                <p className="text-xs text-red-600">Total records</p>
+                <p className="text-sm font-semibold text-red-800">Absent Days</p>
+                <p className="text-xs text-red-600 mt-0.5">Total records</p>
               </div>
-              <span className="text-xl font-semibold text-red-600">{absentCount}</span>
+              <span className="text-2xl font-bold text-red-600">{absentCount}</span>
             </div>
-            <div className="flex items-center justify-between p-4 bg-amber-50 rounded-md border border-amber-200">
+            <div className="flex items-center justify-between p-4 bg-amber-50 rounded-lg border border-amber-200">
               <div>
-                <span className="text-sm font-medium text-amber-800">Pending Leaves</span>
-                <p className="text-xs text-amber-600">Awaiting approval</p>
+                <p className="text-sm font-semibold text-amber-800">Pending Leaves</p>
+                <p className="text-xs text-amber-600 mt-0.5">Awaiting approval</p>
               </div>
-              <span className="text-xl font-semibold text-amber-600">{pendingLeaves}</span>
+              <span className="text-2xl font-bold text-amber-600">{pendingLeaves}</span>
             </div>
           </div>
         </Card>
