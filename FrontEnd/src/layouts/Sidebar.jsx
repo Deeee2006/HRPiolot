@@ -43,14 +43,14 @@ const Sidebar = () => {
     <>
       <button
         onClick={() => setIsMobileOpen(true)}
-        className="lg:hidden fixed top-3 left-3 z-50 w-10 h-10 rounded-xl bg-white/80 backdrop-blur-md border border-purple-200 shadow-md flex items-center justify-center text-purple-600"
+        className="lg:hidden fixed top-3 left-3 z-50 w-10 h-10 rounded-md bg-white border border-gray-300 flex items-center justify-center text-gray-600"
       >
         <FaBars size={18} />
       </button>
 
       {isMobileOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
+          className="lg:hidden fixed inset-0 z-40 bg-black/20"
           onClick={() => setIsMobileOpen(false)}
         />
       )}
@@ -58,22 +58,21 @@ const Sidebar = () => {
       <aside className={`
         fixed lg:sticky top-0 left-0 z-40
         w-64 min-h-screen
-        bg-linear-to-b from-purple-50/90 via-pink-50/80 to-purple-50/90
-        backdrop-blur-xl border-r border-purple-100/60
+        bg-white border-r border-gray-200
         p-4 flex flex-col
         transition-transform duration-300 ease-in-out
         ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
         <div className="flex items-center justify-between mb-6 px-3">
           <div>
-            <h1 className="text-2xl font-extrabold gradient-text tracking-tight">
+            <h1 className="text-xl font-bold text-gray-900 tracking-tight">
               HRPilot
             </h1>
-            <p className="text-[11px] text-purple-400 mt-0.5 font-medium">HR Management System</p>
+            <p className="text-[11px] text-gray-500 mt-0.5 font-medium">HR Management System</p>
           </div>
           <button
             onClick={() => setIsMobileOpen(false)}
-            className="lg:hidden w-8 h-8 rounded-xl bg-purple-100/60 flex items-center justify-center text-purple-500 hover:bg-purple-200/80 transition-colors"
+            className="lg:hidden w-8 h-8 rounded-md bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors"
           >
             <FaTimes size={16} />
           </button>
@@ -87,37 +86,36 @@ const Sidebar = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsMobileOpen(false)}
-                className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-all duration-200 group ${
+                className={`flex items-center gap-3 px-3.5 py-2.5 rounded-md transition-all duration-200 group ${
                   active
-                    ? 'bg-linear-to-r from-purple-500 to-purple-600 text-white shadow-[0_4px_12px_rgba(147,51,234,0.25)]'
-                    : 'text-purple-600/80 hover:bg-purple-100/60 hover:text-purple-700'
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'
                 }`}
-                style={{ animationDelay: `${i * 40}ms` }}
               >
                 <item.icon size={17} className={`transition-transform duration-200 ${active ? 'scale-110' : 'group-hover:scale-110'}`} />
-                <span className="text-sm font-semibold">{item.label}</span>
+                <span className="text-sm font-medium">{item.label}</span>
                 {active && (
-                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white/80" />
+                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-gray-400" />
                 )}
               </NavLink>
             );
           })}
         </nav>
 
-        <div className="mt-auto pt-4 border-t border-purple-200/60 space-y-3 px-1">
-          <div className="px-3.5 py-3 bg-white/40 backdrop-blur-sm rounded-xl border border-purple-100/50">
-            <p className="text-sm font-semibold text-purple-800 truncate">{user?.name}</p>
+        <div className="mt-auto pt-4 border-t border-gray-200 space-y-3 px-1">
+          <div className="px-3.5 py-3 bg-gray-50 rounded-md border border-gray-200">
+            <p className="text-sm font-medium text-gray-900 truncate">{user?.name}</p>
             <div className="flex items-center gap-2 mt-0.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <p className="text-xs text-purple-400 capitalize">{user?.role}</p>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <p className="text-xs text-gray-500 capitalize">{user?.role}</p>
             </div>
           </div>
           <button
             onClick={logout}
-            className="flex items-center gap-3 px-3.5 py-2.5 w-full rounded-xl text-red-500/80 hover:bg-red-50/80 hover:text-red-600 transition-all duration-200 group"
+            className="flex items-center gap-3 px-3.5 py-2.5 w-full rounded-md text-gray-600 hover:bg-gray-100 hover:text-gray-800 transition-all duration-200 group"
           >
             <FaSignOutAlt size={17} className="group-hover:scale-110 transition-transform" />
-            <span className="text-sm font-semibold">Logout</span>
+            <span className="text-sm font-medium">Logout</span>
           </button>
         </div>
       </aside>

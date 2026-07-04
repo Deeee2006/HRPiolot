@@ -7,24 +7,24 @@ const Input = ({ label, error, className = '', icon, floating = false, rightElem
         <div className="relative group">
           {icon && (
             <div
-              className={`absolute left-4 z-10 pointer-events-none transition-all duration-200 flex items-center ${
+              className={`absolute left-3.5 z-10 pointer-events-none transition-all duration-200 flex items-center ${
                 hasValue
-                  ? 'top-3 text-purple-500'
-                  : 'top-1/2 -translate-y-1/2 text-purple-400 group-focus-within:top-3 group-focus-within:-translate-y-0 group-focus-within:text-purple-500'
+                  ? 'top-2.5 text-gray-500'
+                  : 'top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:top-2.5 group-focus-within:-translate-y-0 group-focus-within:text-gray-500'
               }`}
             >
               {icon}
             </div>
           )}
           <input
-            className={`h-11 w-full px-4 rounded-xl bg-white/60 backdrop-blur-sm border-2 transition-all duration-300 text-purple-900 placeholder-transparent focus:outline-none ${
-              icon ? 'pl-10' : ''
+            className={`h-10 w-full px-3 rounded-md bg-white border transition-all duration-200 text-gray-900 placeholder-transparent focus:outline-none ring-2 ring-transparent focus:ring-blue-500 ${
+              icon ? 'pl-9' : ''
             } ${
-              rightElement ? 'pr-10' : ''
+              rightElement ? 'pr-9' : ''
             } ${
               error
-                ? 'border-red-300 focus:border-red-400 focus:shadow-[0_4px_16px_rgba(239,68,68,0.1)]'
-                : 'border-purple-200/60 focus:border-purple-400 focus:shadow-[0_4px_16px_rgba(147,51,234,0.12)] focus:bg-white/80'
+                ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
+                : 'border-gray-300 focus:border-blue-500'
             } ${className}`}
             placeholder=" "
             {...props}
@@ -32,11 +32,11 @@ const Input = ({ label, error, className = '', icon, floating = false, rightElem
           {label && (
             <label
               className={`absolute left-0 transition-all duration-200 pointer-events-none select-none ${
-                icon ? 'left-10' : 'left-4'
+                icon ? 'left-9' : 'left-3'
               } ${
                 hasValue
-                  ? 'top-1 text-xs text-purple-500 font-medium'
-                  : 'top-1/2 -translate-y-1/2 text-sm text-purple-400 group-focus-within:top-1 group-focus-within:-translate-y-0 group-focus-within:text-xs group-focus-within:text-purple-500 group-focus-within:font-medium'
+                  ? 'top-1 text-xs text-gray-500 font-medium'
+                  : 'top-1/2 -translate-y-1/2 text-sm text-gray-400 group-focus-within:top-1 group-focus-within:-translate-y-0 group-focus-within:text-xs group-focus-within:text-gray-500 group-focus-within:font-medium'
               }`}
             >
               {label}
@@ -50,11 +50,6 @@ const Input = ({ label, error, className = '', icon, floating = false, rightElem
         </div>
         {error && (
           <span className="text-xs text-red-500 font-medium flex items-center gap-1 animate-fadeIn">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1.5"/>
-              <path d="M6 3.5V6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-              <path d="M6 8V8.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
             {error}
           </span>
         )}
@@ -65,39 +60,34 @@ const Input = ({ label, error, className = '', icon, floating = false, rightElem
   return (
     <div className="flex flex-col gap-1.5">
       {label && (
-        <label className="text-sm font-semibold text-purple-700">
+        <label className="text-sm font-semibold text-gray-700">
           {label}
         </label>
       )}
       <div className="relative">
         {icon && (
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-400 flex items-center">
+          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 flex items-center">
             {icon}
           </div>
         )}
         <input
-          className={`h-11 w-full px-4 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-purple-200/60 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-400 focus:shadow-[0_4px_16px_rgba(147,51,234,0.1)] focus:bg-white/80 transition-all duration-300 ${
-            icon ? 'pl-10' : ''
+          className={`h-10 w-full px-3 rounded-md bg-white border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none ring-2 ring-transparent focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 ${
+            icon ? 'pl-9' : ''
           } ${
-            rightElement ? 'pr-10' : ''
+            rightElement ? 'pr-9' : ''
           } ${
-            error ? 'border-red-300 focus:border-red-400 focus:shadow-[0_4px_16px_rgba(239,68,68,0.1)]' : ''
+            error ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : ''
           } ${className}`}
           {...props}
         />
         {rightElement && (
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center">
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
             {rightElement}
           </div>
         )}
       </div>
       {error && (
         <span className="text-xs text-red-500 font-medium flex items-center gap-1">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1.5"/>
-            <path d="M6 3.5V6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M6 8V8.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
           {error}
         </span>
       )}

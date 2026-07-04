@@ -62,42 +62,34 @@ const Signup = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-50 via-pink-50 to-blue-50 flex relative overflow-hidden">
-      {/* Decorative blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-purple-200/25 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-pink-200/25 blur-3xl" />
-        <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-blue-200/15 blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/3 w-48 h-48 rounded-full bg-purple-300/15 blur-3xl" />
-      </div>
+    <div className="min-h-screen bg-gray-50 flex relative overflow-hidden">
 
       {/* Left: Branding */}
       <div className="hidden lg:flex w-1/2 min-h-screen relative items-center justify-center p-12">
-        <div className="max-w-md animate-fadeIn">
-          <div className="w-20 h-20 rounded-2xl bg-linear-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6 shadow-[0_12px_36px_rgba(147,51,234,0.35)] animate-float">
-            <span className="text-3xl font-extrabold text-white">H</span>
+        <div className="max-w-md">
+          <div className="w-16 h-16 rounded-lg bg-blue-600 flex items-center justify-center mb-6">
+            <span className="text-2xl font-bold text-white">H</span>
           </div>
-          <h1 className="text-4xl font-extrabold gradient-text mb-3">HRPilot</h1>
-          <p className="text-purple-500/80 text-lg leading-relaxed mb-10">
+          <h1 className="text-3xl font-bold text-gray-900 mb-3">HRPilot</h1>
+          <p className="text-gray-600 text-lg leading-relaxed mb-10">
             Join the platform that makes HR management effortless and efficient.
           </p>
           <div className="space-y-4">
             {features.map((feature, i) => (
               <div
                 key={feature.text}
-                className="flex items-center gap-3 text-purple-700 animate-slideUpFade"
-                style={{ animationDelay: `${i * 0.1}s` }}
+                className="flex items-center gap-3 text-gray-700"
               >
-                <div className="w-10 h-10 rounded-xl bg-white/70 backdrop-blur-sm flex items-center justify-center text-purple-500 shadow-[0_2px_8px_rgba(147,51,234,0.08)]">
+                <div className="w-10 h-10 rounded-lg bg-white border border-gray-200 flex items-center justify-center text-gray-500">
                   {feature.icon}
                 </div>
                 <span className="font-medium">{feature.text}</span>
               </div>
             ))}
           </div>
-          <div className="mt-10 p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-purple-200/30">
-            <p className="text-xs text-purple-500 font-semibold">Start your free trial today</p>
-            <p className="text-xs text-purple-400 mt-0.5">No credit card required. Full access.</p>
+          <div className="mt-10 p-4 bg-white border border-gray-200 rounded-lg">
+            <p className="text-xs text-gray-600 font-semibold">Start your free trial today</p>
+            <p className="text-xs text-gray-500 mt-0.5">No credit card required. Full access.</p>
           </div>
         </div>
       </div>
@@ -107,31 +99,26 @@ const Signup = () => {
         <div className="w-full max-w-md animate-scaleIn">
           {/* Mobile logo */}
           <div className="text-center lg:hidden mb-6">
-            <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-3 shadow-[0_8px_24px_rgba(147,51,234,0.3)]">
-              <span className="text-xl font-extrabold text-white">H</span>
+            <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center mx-auto mb-3">
+              <span className="text-xl font-bold text-white">H</span>
             </div>
-            <h1 className="text-2xl font-extrabold gradient-text">HRPilot</h1>
+            <h1 className="text-2xl font-bold text-gray-900">HRPilot</h1>
           </div>
 
-          <div className="clay-card p-8 sm:p-10">
-            <div className="mb-7">
-              <h2 className="text-2xl font-extrabold text-purple-900">Create account</h2>
-              <p className="text-purple-500 text-sm mt-1">Fill in your details to get started</p>
+          <div className="auth-card p-6">
+            <div className="mb-6">
+              <h2 className="text-xl font-semibold text-gray-900">Create account</h2>
+              <p className="text-gray-600 text-sm mt-1">Fill in your details to get started</p>
             </div>
 
             {errors.form && (
-              <div className="mb-5 p-3.5 bg-red-100/80 backdrop-blur-sm border border-red-200 text-red-700 rounded-xl text-sm font-medium flex items-center gap-2.5 animate-shake">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
-                  <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/>
-                  <path d="M8 4.5V8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  <path d="M8 11V11.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm font-medium flex items-center gap-2.5 animate-shake">
                 <span>{errors.form}</span>
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-              <div className="animate-slideUpFade delay-1">
+              <div>
                 <Input
                   label="Employee ID"
                   name="employeeId"
@@ -143,7 +130,7 @@ const Signup = () => {
                   floating
                 />
               </div>
-              <div className="animate-slideUpFade delay-2">
+              <div>
                 <Input
                   label="Email"
                   name="email"
@@ -156,7 +143,7 @@ const Signup = () => {
                   autoComplete="email"
                 />
               </div>
-              <div className="animate-slideUpFade delay-3">
+              <div>
                 <Input
                   label="Password"
                   name="password"
@@ -171,7 +158,7 @@ const Signup = () => {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="text-purple-400 hover:text-purple-600 transition-colors p-1"
+                      className="text-gray-400 hover:text-gray-600 transition-colors p-1"
                       tabIndex={-1}
                       aria-label={showPassword ? 'Hide password' : 'Show password'}
                     >
@@ -180,7 +167,7 @@ const Signup = () => {
                   }
                 />
               </div>
-              <div className="animate-slideUpFade delay-4">
+              <div>
                 <Input
                   label="Confirm Password"
                   name="confirmPassword"
@@ -194,17 +181,16 @@ const Signup = () => {
                 />
               </div>
 
-              <div className="animate-slideUpFade delay-5">
+              <div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-sm font-semibold text-purple-700">Role</label>
+                  <label className="text-sm font-semibold text-gray-700">Role</label>
                   <div className="relative">
-                    <LuShield size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400 pointer-events-none" />
-                    <LuChevronDown size={16} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-purple-400 pointer-events-none" />
+                    <LuShield size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
                     <select
                       name="role"
                       value={formData.role}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-purple-200/60 text-purple-900 focus:outline-none focus:border-purple-400 focus:shadow-[0_4px_16px_rgba(147,51,234,0.1)] focus:bg-white/80 transition-all duration-300 appearance-none cursor-pointer"
+                      className="w-full pl-10 pr-10 py-2.5 rounded-md bg-white border border-gray-300 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all duration-200 appearance-none cursor-pointer minimal-select"
                     >
                       <option value="employee">Employee</option>
                       <option value="admin">Admin</option>
@@ -213,7 +199,7 @@ const Signup = () => {
                 </div>
               </div>
 
-              <div className="animate-slideUpFade delay-6 pt-1">
+              <div className="pt-1">
                 <Button
                   type="submit"
                   className="w-full"
@@ -227,7 +213,7 @@ const Signup = () => {
               </div>
             </form>
 
-            <div className="mt-6 animate-slideUpFade delay-7">
+            <div className="mt-6">
               <div className="divider-text justify-center mb-4">
                 <span>or sign up with</span>
               </div>
@@ -243,9 +229,9 @@ const Signup = () => {
               </div>
             </div>
 
-            <p className="text-center mt-6 text-purple-500 text-sm animate-fadeIn delay-8">
+            <p className="text-center mt-6 text-gray-600 text-sm">
               Already have an account?{' '}
-              <Link to="/login" className="font-semibold text-purple-700 hover:text-purple-900 transition-colors">
+              <Link to="/login" className="font-semibold text-gray-700 hover:text-gray-900 transition-colors">
                 Sign In
               </Link>
             </p>

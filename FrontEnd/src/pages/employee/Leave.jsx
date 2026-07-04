@@ -51,82 +51,82 @@ const Leave = () => {
   return (
     <div className="p-6 flex flex-col gap-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-purple-800">Leave Requests</h2>
+        <h2 className="text-xl font-semibold text-gray-900">Leave Requests</h2>
         <Button onClick={() => setIsModalOpen(true)} size="sm" icon={<FaPlus size={14} />}>
           Apply Leave
         </Button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
+        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-100/80 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-md bg-amber-100 flex items-center justify-center">
               <FaCalendar className="text-amber-600" size={18} />
             </div>
             <div>
-              <p className="text-xl font-bold text-amber-600">12</p>
+              <p className="text-xl font-semibold text-amber-600">12</p>
               <p className="text-xs text-amber-700 font-medium">Leave Balance</p>
             </div>
           </div>
         </Card>
-        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
+        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100/80 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center">
               <FaFileAlt className="text-emerald-600" size={18} />
             </div>
             <div>
-              <p className="text-xl font-bold text-emerald-600">{approved}</p>
+              <p className="text-xl font-semibold text-emerald-600">{approved}</p>
               <p className="text-xs text-emerald-700 font-medium">Approved</p>
             </div>
           </div>
         </Card>
-        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
+        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-100/80 flex items-center justify-center">
-              <FaClock className="text-purple-600" size={18} />
+            <div className="w-10 h-10 rounded-md bg-gray-100 flex items-center justify-center">
+              <FaClock className="text-gray-600" size={18} />
             </div>
             <div>
-              <p className="text-xl font-bold text-purple-600">{pending}</p>
-              <p className="text-xs text-purple-700 font-medium">Pending</p>
+              <p className="text-xl font-semibold text-gray-600">{pending}</p>
+              <p className="text-xs text-gray-700 font-medium">Pending</p>
             </div>
           </div>
         </Card>
-        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
+        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-red-100/80 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-md bg-red-100 flex items-center justify-center">
               <FaFileAlt className="text-red-600" size={18} />
             </div>
             <div>
-              <p className="text-xl font-bold text-red-600">{rejected}</p>
+              <p className="text-xl font-semibold text-red-600">{rejected}</p>
               <p className="text-xs text-red-700 font-medium">Rejected</p>
             </div>
           </div>
         </Card>
       </div>
 
-      <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
-        <h3 className="text-base font-bold text-purple-800">Leave History</h3>
+      <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
+        <h3 className="text-base font-semibold text-gray-900">Leave History</h3>
         <div className="flex flex-col gap-3">
           {leaveRequests.length === 0 && (
             <div className="text-center py-10">
-              <FaFileAlt size={36} className="text-purple-300 mx-auto mb-3" />
-              <p className="text-purple-400 text-sm">No leave requests yet</p>
+              <FaFileAlt size={36} className="text-gray-300 mx-auto mb-3" />
+              <p className="text-gray-500 text-sm">No leave requests yet</p>
             </div>
           )}
           {leaveRequests.map((request) => (
-            <div key={request.id} className="p-4 bg-purple-50/60 rounded-xl border border-purple-100/50">
+            <div key={request.id} className="p-4 bg-gray-50 rounded-md border border-gray-200">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-1.5">
-                    <h4 className="font-semibold text-purple-800">{request.type}</h4>
+                    <h4 className="font-medium text-gray-900">{request.type}</h4>
                     {getStatusBadge(request.status)}
                   </div>
-                  <p className="text-xs text-purple-500 mb-1">
+                  <p className="text-xs text-gray-500 mb-1">
                     {request.startDate}{request.startDate !== request.endDate ? ` — ${request.endDate}` : ''}
                   </p>
-                  <p className="text-sm text-purple-600">{request.reason}</p>
+                  <p className="text-sm text-gray-600">{request.reason}</p>
                   {request.comments && (
-                    <p className="text-xs text-purple-400 mt-1 italic">Admin: {request.comments}</p>
+                    <p className="text-xs text-gray-500 mt-1 italic">Admin: {request.comments}</p>
                   )}
                 </div>
               </div>
@@ -138,11 +138,11 @@ const Leave = () => {
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Apply for Leave">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-purple-700">Leave Type</label>
+            <label className="text-sm font-medium text-gray-700">Leave Type</label>
             <select
               value={formData.type}
               onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-              className="w-full px-4 py-2.5 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-purple-200/60 text-purple-900 focus:outline-none focus:border-purple-400 focus:shadow-[0_4px_16px_rgba(147,51,234,0.1)] transition-all duration-300 glass-select"
+              className="w-full px-4 py-2.5 rounded-md bg-white border border-gray-300 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all duration-200 appearance-none minimal-select"
             >
               <option value="Sick Leave">Sick Leave</option>
               <option value="Annual Leave">Annual Leave</option>
@@ -159,13 +159,13 @@ const Leave = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-purple-700">Reason</label>
+            <label className="text-sm font-medium text-gray-700">Reason</label>
             <textarea
               value={formData.reason}
               onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
               placeholder="Provide reason for leave"
               rows={3}
-              className="w-full px-4 py-2.5 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-purple-200/60 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-400 focus:shadow-[0_4px_16px_rgba(147,51,234,0.1)] transition-all duration-300 resize-none"
+              className="w-full px-4 py-2.5 rounded-md bg-white border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all duration-200 resize-none"
             />
             {errors.reason && <span className="text-xs text-red-500">{errors.reason}</span>}
           </div>
