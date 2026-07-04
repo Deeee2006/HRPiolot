@@ -25,29 +25,36 @@ const AdminDashboard = () => {
 
   return (
     <div className="flex flex-col gap-6">
+      {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-semibold text-gray-900">Admin Dashboard</h2>
-          <p className="text-gray-600 text-sm">Overview of your organization</p>
+          <p className="text-sm text-gray-500 mt-0.5">Overview of your organization</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Stat Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, i) => (
-          <Card key={i} className="h-full p-4 rounded-lg flex flex-col justify-between">
-            <div className={`w-11 h-11 rounded-md ${stat.color} flex items-center justify-center text-white`}>
-              <stat.icon size={20} />
+          <Card key={i} className="p-4">
+            <div className="flex items-center gap-3">
+              <div className={`w-10 h-10 rounded-md ${stat.color} flex items-center justify-center text-white shrink-0`}>
+                <stat.icon size={17} />
+              </div>
+              <div>
+                <p className="text-xl font-semibold text-gray-900">{stat.value}</p>
+                <p className="text-xs text-gray-500 font-medium">{stat.title}</p>
+              </div>
             </div>
-            <p className="text-xl font-semibold text-gray-900">{stat.value}</p>
-            <p className="text-xs text-gray-600 font-medium">{stat.title}</p>
           </Card>
         ))}
       </div>
 
+      {/* Activity + Department */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
-          <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2">
-            <FaChartLine size={16} />
+        <Card className="p-6">
+          <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
+            <FaChartLine size={15} className="text-gray-400" />
             Recent Leave Activity
           </h3>
           <div className="flex flex-col gap-2">
@@ -61,25 +68,27 @@ const AdminDashboard = () => {
                   {act.status}
                 </Badge>
               </div>
-            )) : <p className="text-sm text-gray-500 text-center py-6">No recent activity</p>}
+            )) : <p className="text-sm text-gray-500 text-center py-8">No recent activity</p>}
           </div>
         </Card>
 
-        <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
-          <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2">
-            <FaChartBar size={16} />
+        <Card className="p-6">
+          <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
+            <FaChartBar size={15} className="text-gray-400" />
             Department Distribution
           </h3>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             {deptData.map((dept, i) => (
               <div key={i}>
-                <div className="flex justify-between items-center mb-1">
+                <div className="flex items-center justify-between mb-1.5">
                   <span className="text-sm font-medium text-gray-700">{dept.name}</span>
                   <span className="text-xs text-gray-500">{dept.count} employees</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-blue-600 h-2 rounded-full transition-all duration-500"
-                    style={{ width: `${dept.pct}%` }} />
+                <div className="w-full bg-gray-100 rounded-full h-1.5">
+                  <div
+                    className="bg-blue-500 h-1.5 rounded-full transition-all duration-500"
+                    style={{ width: `${dept.pct}%` }}
+                  />
                 </div>
               </div>
             ))}
@@ -87,34 +96,36 @@ const AdminDashboard = () => {
         </Card>
       </div>
 
-      <Card className="p-4 rounded-lg flex flex-col gap-4">
-        <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2">
-          <FaExclamationCircle size={16} />
+      {/* Pending Actions */}
+      <Card className="p-6">
+        <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
+          <FaExclamationCircle size={15} className="text-amber-500" />
           Pending Actions
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div onClick={() => navigate('/admin/leave')} className="p-4 bg-amber-50 rounded-md border border-amber-200 cursor-pointer hover:border-amber-300 transition-all">
-            <p className="text-2xl font-semibold text-amber-600">{employees.reduce((s, e) => s + (e.leaveRequests?.filter(r => r.status === 'pending').length || 0), 0)}</p>
-            <p className="text-sm text-amber-700 font-medium">Leave Requests</p>
-            <p className="text-xs text-amber-500">Awaiting approval</p>
+          <div onClick={() => navigate('/admin/leave')} className="p-4 bg-amber-50 rounded-lg border border-amber-200 cursor-pointer hover:border-amber-300 transition-all">
+            <p className="text-2xl font-semibold text-amber-600 mb-1">{employees.reduce((s, e) => s + (e.leaveRequests?.filter(r => r.status === 'pending').length || 0), 0)}</p>
+            <p className="text-sm font-medium text-amber-800">Leave Requests</p>
+            <p className="text-xs text-amber-600 mt-0.5">Awaiting approval</p>
           </div>
-          <div className="p-4 bg-blue-50 rounded-md border border-blue-200 cursor-pointer hover:border-blue-300 transition-all">
-            <p className="text-2xl font-semibold text-blue-600">2</p>
-            <p className="text-sm text-blue-700 font-medium">Attendance Issues</p>
-            <p className="text-xs text-blue-500">Need review</p>
+          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 cursor-pointer hover:border-blue-300 transition-all">
+            <p className="text-2xl font-semibold text-blue-600 mb-1">2</p>
+            <p className="text-sm font-medium text-blue-800">Attendance Issues</p>
+            <p className="text-xs text-blue-600 mt-0.5">Need review</p>
           </div>
-          <div className="p-4 bg-gray-50 rounded-md border border-gray-200 cursor-pointer hover:border-gray-300 transition-all">
-            <p className="text-2xl font-semibold text-gray-600">1</p>
-            <p className="text-sm text-gray-700 font-medium">Onboarding Tasks</p>
-            <p className="text-xs text-gray-500">Incomplete</p>
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 cursor-pointer hover:border-gray-300 transition-all">
+            <p className="text-2xl font-semibold text-gray-600 mb-1">1</p>
+            <p className="text-sm font-medium text-gray-800">Onboarding Tasks</p>
+            <p className="text-xs text-gray-500 mt-0.5">Incomplete</p>
           </div>
         </div>
       </Card>
 
-      <div className="bg-white rounded-lg border border-gray-200 p-4 flex flex-col gap-4">
-        <div className="flex items-center justify-between">
+      {/* Employee Overview Table */}
+      <Card className="p-6">
+        <div className="flex items-center justify-between mb-4">
           <h3 className="text-base font-semibold text-gray-900">Employee Overview</h3>
-          <button onClick={() => navigate('/admin/employees')} className="text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors flex items-center gap-1">
+          <button onClick={() => navigate('/admin/employees')} className="text-xs font-medium text-blue-600 hover:text-blue-700 transition-colors flex items-center gap-1">
             View All <FaArrowRight size={10} />
           </button>
         </div>
@@ -133,7 +144,7 @@ const AdminDashboard = () => {
                 <tr key={employee.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white text-sm font-medium">
+                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white text-sm font-medium shrink-0">
                         {employee.name.charAt(0)}
                       </div>
                       <div>
@@ -150,7 +161,7 @@ const AdminDashboard = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

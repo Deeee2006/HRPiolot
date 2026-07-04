@@ -56,86 +56,92 @@ const AdminAttendance = () => {
   const rate = stats.total > 0 ? Math.round((stats.present / stats.total) * 100) : 0;
 
   return (
-    <div className="p-6 flex flex-col gap-6">
+    <div className="flex flex-col gap-6">
+      {/* Page Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-gray-900">Attendance Overview</h2>
-        <div className="flex items-center gap-3">
-          <FaCalendar className="text-gray-400" size={18} />
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900">Attendance Overview</h2>
+          <p className="text-sm text-gray-500 mt-0.5">Track daily attendance across your team</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <FaCalendar className="text-gray-400" size={15} />
           <input
             type="date"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
-            className="px-4 py-2 rounded-md bg-white border border-gray-300 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all duration-200 text-sm"
+            className="h-9 px-3 rounded-md bg-white border border-gray-300 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all duration-200 text-sm"
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
+      {/* Stat Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Card className="p-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center">
-              <FaCheckCircle className="text-emerald-600" size={18} />
+            <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center shrink-0">
+              <FaCheckCircle className="text-emerald-600" size={17} />
             </div>
             <div>
-              <p className="text-xl font-semibold text-emerald-600">{stats.present}</p>
-              <p className="text-xs text-emerald-700 font-medium">Present</p>
+              <p className="text-xl font-semibold text-gray-900">{stats.present}</p>
+              <p className="text-xs text-gray-500 font-medium">Present</p>
             </div>
           </div>
         </Card>
-        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
+        <Card className="p-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-red-100 flex items-center justify-center">
-              <FaTimesCircle className="text-red-600" size={18} />
+            <div className="w-10 h-10 rounded-md bg-red-100 flex items-center justify-center shrink-0">
+              <FaTimesCircle className="text-red-600" size={17} />
             </div>
             <div>
-              <p className="text-xl font-semibold text-red-600">{stats.absent}</p>
-              <p className="text-xs text-red-700 font-medium">Absent</p>
+              <p className="text-xl font-semibold text-gray-900">{stats.absent}</p>
+              <p className="text-xs text-gray-500 font-medium">Absent</p>
             </div>
           </div>
         </Card>
-        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
+        <Card className="p-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-amber-100 flex items-center justify-center">
-              <FaExclamationCircle className="text-amber-600" size={18} />
+            <div className="w-10 h-10 rounded-md bg-amber-100 flex items-center justify-center shrink-0">
+              <FaExclamationCircle className="text-amber-600" size={17} />
             </div>
             <div>
-              <p className="text-xl font-semibold text-amber-600">{stats.leave}</p>
-              <p className="text-xs text-amber-700 font-medium">On Leave</p>
+              <p className="text-xl font-semibold text-gray-900">{stats.leave}</p>
+              <p className="text-xs text-gray-500 font-medium">On Leave</p>
             </div>
           </div>
         </Card>
-        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
+        <Card className="p-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-gray-100 flex items-center justify-center">
-              <FaCalendar className="text-gray-600" size={18} />
+            <div className="w-10 h-10 rounded-md bg-blue-100 flex items-center justify-center shrink-0">
+              <FaCalendar className="text-blue-600" size={17} />
             </div>
             <div>
-              <p className="text-xl font-semibold text-gray-600">{rate}%</p>
-              <p className="text-xs text-gray-700 font-medium">Attendance Rate</p>
+              <p className="text-xl font-semibold text-gray-900">{rate}%</p>
+              <p className="text-xs text-gray-500 font-medium">Attendance Rate</p>
             </div>
           </div>
         </Card>
       </div>
 
-      <div className="bg-white rounded-lg border border-gray-200 p-4 flex flex-col gap-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      {/* Employee Attendance Table */}
+      <Card className="p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <h3 className="text-base font-semibold text-gray-900">Employee Attendance</h3>
           <div className="flex items-center gap-3">
-            <div className="relative flex-1 sm:w-48">
+            <div className="relative">
               <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={13} />
               <input
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 rounded-md bg-white border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all"
+                className="h-9 pl-9 pr-3 w-48 rounded-md bg-white border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all"
               />
             </div>
             <div className="flex items-center gap-2">
-              <FaFilter className="text-gray-400" size={14} />
+              <FaFilter className="text-gray-400" size={13} />
               <select
                 value={selectedFilter}
                 onChange={(e) => setSelectedFilter(e.target.value)}
-                className="px-3 py-2 rounded-md bg-white border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all appearance-none minimal-select"
+                className="h-9 px-3 rounded-md bg-white border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all appearance-none minimal-select pr-8"
               >
                 {filters.map(f => <option key={f} value={f}>{f}</option>)}
               </select>
@@ -159,7 +165,7 @@ const AdminAttendance = () => {
                 <tr key={employee.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-md bg-blue-600 flex items-center justify-center text-white font-medium text-sm">
+                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-medium text-sm shrink-0">
                         {employee.name.charAt(0)}
                       </div>
                       <div>
@@ -169,8 +175,8 @@ const AdminAttendance = () => {
                     </div>
                   </td>
                   <td className="py-3 px-4 text-sm text-gray-600">{employee.department}</td>
-                  <td className="py-3 px-4 text-sm text-gray-600 font-mono">{employee.checkIn || '--:--'}</td>
-                  <td className="py-3 px-4 text-sm text-gray-600 font-mono">{employee.checkOut || '--:--'}</td>
+                  <td className="py-3 px-4 text-sm text-gray-600 font-mono">{employee.checkIn || '—'}</td>
+                  <td className="py-3 px-4 text-sm text-gray-600 font-mono">{employee.checkOut || '—'}</td>
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-2">
                       {getStatusIcon(employee.todayStatus)}
@@ -185,11 +191,11 @@ const AdminAttendance = () => {
 
         {filteredData.length === 0 && (
           <div className="text-center py-12">
-            <FaCalendar size={36} className="text-gray-300 mx-auto mb-3" />
+            <FaCalendar size={32} className="text-gray-300 mx-auto mb-3" />
             <p className="text-gray-500 text-sm">No attendance records found</p>
           </div>
         )}
-      </div>
+      </Card>
     </div>
   );
 };

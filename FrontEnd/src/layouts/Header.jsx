@@ -19,25 +19,26 @@ const Header = ({ title }) => {
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-white border-b border-gray-200 px-6 py-4">
-      <div className="flex justify-between items-center">
-        <div>
+    <header className="sticky top-0 z-30 bg-white border-b border-gray-200">
+      <div className="flex items-center justify-between px-6 py-4">
+        <div className="flex flex-col gap-0.5">
           <div className="flex items-center gap-3">
             <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
-            <span className="hidden sm:inline-flex px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+            <span className="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
               {getPageSubtitle()}
             </span>
           </div>
-          <p className="text-xs text-gray-500 mt-0.5">{currentDate}</p>
+          <p className="text-xs text-gray-500">{currentDate}</p>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-3 bg-gray-50 rounded-md px-4 py-2 border border-gray-200">
-            <div className="w-9 h-9 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-sm">
+
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 bg-gray-50 rounded-lg px-3 py-2 border border-gray-200">
+            <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-sm shrink-0">
               {user?.name?.charAt(0) || 'U'}
             </div>
-            <div className="hidden sm:block">
+            <div className="hidden sm:flex flex-col">
               <p className="text-sm font-medium text-gray-900 leading-tight">{user?.name}</p>
-              <p className="text-[11px] text-gray-500 capitalize leading-tight">{user?.role}</p>
+              <p className="text-xs text-gray-500 capitalize leading-tight">{user?.role}</p>
             </div>
           </div>
         </div>

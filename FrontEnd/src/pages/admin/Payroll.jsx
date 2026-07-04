@@ -33,49 +33,55 @@ const AdminPayroll = () => {
   const avgSalary = Math.round(totalPayroll / employees.length);
 
   return (
-    <div className="p-6 flex flex-col gap-6">
+    <div className="flex flex-col gap-6">
+      {/* Page Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-gray-900">Payroll Management</h2>
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900">Payroll Management</h2>
+          <p className="text-sm text-gray-500 mt-0.5">Manage employee salaries and compensation</p>
+        </div>
       </div>
 
+      {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
+        <Card className="p-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-md bg-blue-600 flex items-center justify-center text-white">
-              <FaDollarSign size={22} />
+            <div className="w-10 h-10 rounded-md bg-blue-100 flex items-center justify-center shrink-0">
+              <FaDollarSign className="text-blue-600" size={17} />
             </div>
             <div>
-              <p className="text-xs text-gray-600 font-medium">Total Payroll</p>
+              <p className="text-xs text-gray-500 font-medium">Total Payroll</p>
               <p className="text-xl font-semibold text-gray-900">${(totalPayroll / 1000).toFixed(0)}K</p>
             </div>
           </div>
         </Card>
-        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
+        <Card className="p-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-md bg-emerald-600 flex items-center justify-center text-white">
-              <FaChartLine size={22} />
+            <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center shrink-0">
+              <FaChartLine className="text-emerald-600" size={17} />
             </div>
             <div>
-              <p className="text-xs text-emerald-600 font-medium">Average Salary</p>
+              <p className="text-xs text-gray-500 font-medium">Average Salary</p>
               <p className="text-xl font-semibold text-gray-900">${avgSalary.toLocaleString()}</p>
             </div>
           </div>
         </Card>
-        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
+        <Card className="p-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-md bg-blue-600 flex items-center justify-center text-white">
-              <FaUsers size={22} />
+            <div className="w-10 h-10 rounded-md bg-purple-100 flex items-center justify-center shrink-0">
+              <FaUsers className="text-purple-600" size={17} />
             </div>
             <div>
-              <p className="text-xs text-blue-600 font-medium">Total Employees</p>
+              <p className="text-xs text-gray-500 font-medium">Total Employees</p>
               <p className="text-xl font-semibold text-gray-900">{employees.length}</p>
             </div>
           </div>
         </Card>
       </div>
 
-      <div className="bg-white rounded-lg border border-gray-200 p-4 flex flex-col gap-4">
-        <h3 className="text-base font-semibold text-gray-900">Salary Overview</h3>
+      {/* Salary Table */}
+      <Card className="p-6">
+        <h3 className="text-base font-semibold text-gray-900 mb-4">Salary Overview</h3>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -85,7 +91,7 @@ const AdminPayroll = () => {
                 <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Position</th>
                 <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Annual Salary</th>
                 <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Monthly</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                <th className="text-right py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -93,7 +99,7 @@ const AdminPayroll = () => {
                 <tr key={employee.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-md bg-blue-600 flex items-center justify-center text-white font-medium text-sm">
+                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-medium text-sm shrink-0">
                         {employee.name.charAt(0)}
                       </div>
                       <div>
@@ -115,45 +121,48 @@ const AdminPayroll = () => {
                     ${(employee.salary / 12).toLocaleString(undefined, { maximumFractionDigits: 0 })}
                   </td>
                   <td className="py-3 px-4">
-                    {editingId === employee.id ? (
-                      <div className="flex gap-1.5">
-                        <Button onClick={() => handleSave(employee.id)} variant="success" size="sm"><FaSave size={13} /></Button>
-                        <Button onClick={handleCancel} variant="danger" size="sm"><FaTimes size={13} /></Button>
-                      </div>
-                    ) : (
-                      <Button onClick={() => handleEdit(employee)} variant="outline" size="sm" icon={<FaEdit size={13} />}>
-                        Edit
-                      </Button>
-                    )}
+                    <div className="flex justify-end gap-1.5">
+                      {editingId === employee.id ? (
+                        <>
+                          <Button onClick={() => handleSave(employee.id)} variant="success" size="sm"><FaSave size={13} /></Button>
+                          <Button onClick={handleCancel} variant="danger" size="sm"><FaTimes size={13} /></Button>
+                        </>
+                      ) : (
+                        <Button onClick={() => handleEdit(employee)} variant="outline" size="sm" icon={<FaEdit size={13} />}>
+                          Edit
+                        </Button>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </div>
+      </Card>
 
-      <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
-        <h3 className="text-base font-semibold text-gray-900">Department Salary Breakdown</h3>
-        <div className="flex flex-col gap-3">
+      {/* Department Breakdown */}
+      <Card className="p-6">
+        <h3 className="text-base font-semibold text-gray-900 mb-4">Department Salary Breakdown</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {['Engineering', 'Marketing', 'Finance', 'Human Resources'].map((dept) => {
             const deptEmployees = employees.filter(e => e.department === dept);
             const deptTotal = deptEmployees.reduce((sum, e) => sum + e.salary, 0);
             const deptAvg = deptEmployees.length > 0 ? Math.round(deptTotal / deptEmployees.length) : 0;
             return (
-              <div key={dept} className="p-4 bg-gray-50 rounded-md border border-gray-200">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-medium text-gray-900">{dept}</span>
-                  <span className="text-xs text-gray-500">{deptEmployees.length} employees</span>
+              <div key={dept} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-sm font-semibold text-gray-900">{dept}</span>
+                  <span className="text-xs text-gray-500 bg-white px-2 py-0.5 rounded-full border border-gray-200">{deptEmployees.length} employees</span>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-2.5 bg-white rounded-md border border-gray-200">
-                    <p className="text-xs text-gray-500">Total</p>
-                    <p className="font-medium text-gray-900">${(deptTotal / 1000).toFixed(0)}K</p>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3 bg-white rounded-md border border-gray-200">
+                    <p className="text-xs text-gray-500 mb-0.5">Total</p>
+                    <p className="text-sm font-semibold text-gray-900">${(deptTotal / 1000).toFixed(0)}K</p>
                   </div>
-                  <div className="p-2.5 bg-white rounded-md border border-gray-200">
-                    <p className="text-xs text-gray-500">Average</p>
-                    <p className="font-medium text-gray-900">${deptAvg.toLocaleString()}</p>
+                  <div className="p-3 bg-white rounded-md border border-gray-200">
+                    <p className="text-xs text-gray-500 mb-0.5">Average</p>
+                    <p className="text-sm font-semibold text-gray-900">${deptAvg.toLocaleString()}</p>
                   </div>
                 </div>
               </div>
