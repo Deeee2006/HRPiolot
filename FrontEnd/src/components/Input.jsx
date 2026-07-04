@@ -7,7 +7,7 @@ const Input = ({ label, error, className = '', icon, floating = false, rightElem
         <div className="relative group">
           {icon && (
             <div
-              className={`absolute left-3.5 z-10 pointer-events-none transition-all duration-200 ${
+              className={`absolute left-4 z-10 pointer-events-none transition-all duration-200 flex items-center ${
                 hasValue
                   ? 'top-3 text-purple-500'
                   : 'top-1/2 -translate-y-1/2 text-purple-400 group-focus-within:top-3 group-focus-within:-translate-y-0 group-focus-within:text-purple-500'
@@ -17,7 +17,7 @@ const Input = ({ label, error, className = '', icon, floating = false, rightElem
             </div>
           )}
           <input
-            className={`w-full px-4 pt-5 pb-2 rounded-xl bg-white/60 backdrop-blur-sm border-2 transition-all duration-300 text-purple-900 placeholder-transparent focus:outline-none ${
+            className={`h-11 w-full px-4 rounded-xl bg-white/60 backdrop-blur-sm border-2 transition-all duration-300 text-purple-900 placeholder-transparent focus:outline-none ${
               icon ? 'pl-10' : ''
             } ${
               rightElement ? 'pr-10' : ''
@@ -43,7 +43,7 @@ const Input = ({ label, error, className = '', icon, floating = false, rightElem
             </label>
           )}
           {rightElement && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 z-10">
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 z-10 flex items-center">
               {rightElement}
             </div>
           )}
@@ -71,12 +71,12 @@ const Input = ({ label, error, className = '', icon, floating = false, rightElem
       )}
       <div className="relative">
         {icon && (
-          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400">
+          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-400 flex items-center">
             {icon}
           </div>
         )}
         <input
-          className={`w-full px-4 py-2.5 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-purple-200/60 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-400 focus:shadow-[0_4px_16px_rgba(147,51,234,0.1)] focus:bg-white/80 transition-all duration-300 ${
+          className={`h-11 w-full px-4 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-purple-200/60 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-400 focus:shadow-[0_4px_16px_rgba(147,51,234,0.1)] focus:bg-white/80 transition-all duration-300 ${
             icon ? 'pl-10' : ''
           } ${
             rightElement ? 'pr-10' : ''
@@ -86,7 +86,7 @@ const Input = ({ label, error, className = '', icon, floating = false, rightElem
           {...props}
         />
         {rightElement && (
-          <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center">
             {rightElement}
           </div>
         )}
