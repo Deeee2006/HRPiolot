@@ -14,6 +14,7 @@ const Button = ({ children, variant = 'primary', size = 'md', className = '', di
     sm: 'px-3.5 py-1.5 text-sm',
     md: 'px-5 py-2.5 text-sm',
     lg: 'px-7 py-3 text-base',
+    custom: 'h-11 px-5 text-sm',
   };
 
   const stateStyles = disabled ? 'opacity-50 cursor-not-allowed hover:translate-y-0 hover:shadow-none' : '';

@@ -108,7 +108,7 @@ const Login = () => {
             <h1 className="text-2xl font-extrabold gradient-text">HRPilot</h1>
           </div>
 
-          <div className="clay-card p-8 sm:p-10">
+          <div className="clay-card p-8">
             <div className="mb-7">
               <h2 className="text-2xl font-extrabold text-purple-900">Welcome back</h2>
               <p className="text-purple-500 text-sm mt-1">Sign in to your account to continue</p>
@@ -125,7 +125,7 @@ const Login = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
               <div className="animate-slideUpFade delay-1">
                 <Input
                   label="Email"
@@ -164,7 +164,7 @@ const Login = () => {
                 />
               </div>
 
-              <div className="flex items-center justify-between animate-slideUpFade delay-3 pt-1">
+              <div className="flex items-center justify-between text-sm animate-slideUpFade delay-3">
                 <label className="flex items-center gap-2 cursor-pointer group">
                   <input
                     type="checkbox"
@@ -172,23 +172,23 @@ const Login = () => {
                     onChange={(e) => setRememberMe(e.target.checked)}
                     className="clay-checkbox"
                   />
-                  <span className="text-sm text-purple-500 group-hover:text-purple-700 transition-colors font-medium">
+                  <span className="text-purple-500 group-hover:text-purple-700 transition-colors font-medium">
                     Remember me
                   </span>
                 </label>
                 <button
                   type="button"
-                  className="text-sm text-purple-500 hover:text-purple-700 font-medium transition-colors"
+                  className="text-purple-500 hover:text-purple-700 font-medium transition-colors"
                 >
                   Forgot password?
                 </button>
               </div>
 
-              <div className="animate-slideUpFade delay-4 pt-1">
+              <div className="animate-slideUpFade delay-4">
                 <Button
                   type="submit"
-                  className="w-full"
-                  size="lg"
+                  className="w-full h-11 mt-2 rounded-xl"
+                  size="custom"
                   loading={isLoading}
                   disabled={isLoading}
                 >
@@ -214,7 +214,7 @@ const Login = () => {
               </div>
             </div>
 
-            <p className="text-center mt-6 text-purple-500 text-sm animate-fadeIn delay-6">
+            <p className="text-center text-sm mt-2 animate-fadeIn delay-6">
               Don't have an account?{' '}
               <Link to="/signup" className="font-semibold text-purple-700 hover:text-purple-900 transition-colors">
                 Sign Up
@@ -223,16 +223,16 @@ const Login = () => {
           </div>
 
           {/* Demo Credentials */}
-          <div className="mt-5 clay-card p-4 animate-slideUpFade delay-7">
+          <div className="mt-6 pt-4 border-t border-purple-200/30 clay-card p-4 animate-slideUpFade delay-7">
             <p className="text-xs text-purple-600 font-semibold mb-2.5 flex items-center gap-1.5">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
               Quick access
             </p>
-            <div className="flex gap-2">
+            <div className="grid grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => fillDemo('john.doe@company.com')}
-                className="flex-1 text-left text-xs text-purple-500 hover:text-purple-700 hover:bg-purple-100/50 rounded-lg px-3 py-2 transition-all font-medium border border-purple-200/30 hover:border-purple-300/50"
+                className="w-full text-left text-xs text-purple-500 hover:text-purple-700 hover:bg-purple-100/50 p-3 rounded-xl transition-all font-medium border border-purple-200/30 hover:border-purple-300/50"
               >
                 <span className="text-purple-700 font-semibold">Admin</span>
                 <br />john.doe@company.com
@@ -240,7 +240,7 @@ const Login = () => {
               <button
                 type="button"
                 onClick={() => fillDemo('jane.smith@company.com')}
-                className="flex-1 text-left text-xs text-purple-500 hover:text-purple-700 hover:bg-purple-100/50 rounded-lg px-3 py-2 transition-all font-medium border border-purple-200/30 hover:border-purple-300/50"
+                className="w-full text-left text-xs text-purple-500 hover:text-purple-700 hover:bg-purple-100/50 p-3 rounded-xl transition-all font-medium border border-purple-200/30 hover:border-purple-300/50"
               >
                 <span className="text-purple-700 font-semibold">Employee</span>
                 <br />jane.smith@company.com
