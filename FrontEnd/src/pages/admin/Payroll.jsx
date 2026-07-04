@@ -4,7 +4,7 @@ import { useToast } from '../../context/ToastContext';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import { FaDollarSign, FaEdit, FaSave, FaTimes, FaChartLine, FaUsers } from 'react-icons/fa';
+import { FaDollarSign, FaEdit, FaSave, FaTimes, FaChartBar, FaUsers } from 'react-icons/fa';
 
 const AdminPayroll = () => {
   const { employees, updateSalary } = useEmployee();
@@ -58,7 +58,7 @@ const AdminPayroll = () => {
         <Card className="p-4">
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center shrink-0">
-              <FaChartLine className="text-emerald-600" size={17} />
+              <FaChartBar className="text-emerald-600" size={17} />
             </div>
             <div>
               <p className="text-xs text-gray-500 font-medium">Average Salary</p>

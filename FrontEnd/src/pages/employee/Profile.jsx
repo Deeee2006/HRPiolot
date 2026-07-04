@@ -6,7 +6,38 @@ import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Badge from '../../components/Badge';
-import { FaUser, FaBriefcase, FaDollarSign, FaFileAlt, FaMapMarkerAlt, FaEnvelope, FaPhone, FaEdit, FaSave, FaTimes, FaDownload, FaIdBadge } from 'react-icons/fa';
+import {
+  FaUser, FaBriefcase, FaDollarSign, FaFileAlt, FaMapMarkerAlt,
+  FaEnvelope, FaPhone, FaEdit, FaSave, FaTimes, FaDownload,
+  FaIdBadge, FaCalendarAlt, FaBuilding
+} from 'react-icons/fa';
+
+/* Reusable Components for clean layout */
+const InfoTile = ({ icon, label, value, placeholder = 'Not provided' }) => (
+  <div className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-[0_2px_8px_-3px_rgba(0,0,0,0.05)] transition-all hover:bg-gray-50/80 hover:shadow-sm">
+    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gray-50 text-gray-400 border border-gray-100">
+      {icon}
+    </div>
+    <div className="min-w-0">
+      <p className="text-[11px] font-bold uppercase tracking-wider text-gray-400">{label}</p>
+      <p className="mt-0.5 truncate text-sm font-semibold text-gray-800">
+        {value || <span className="font-normal italic text-gray-400">{placeholder}</span>}
+      </p>
+    </div>
+  </div>
+);
+
+const SectionHeader = ({ icon, title, action }) => (
+  <div className="mb-6 flex items-center justify-between border-b border-gray-100/80 pb-4">
+    <h3 className="flex items-center gap-3 text-base font-bold text-gray-900">
+      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600 shadow-sm shadow-blue-500/10">
+        {icon}
+      </span>
+      {title}
+    </h3>
+    {action}
+  </div>
+);
 
 const Profile = () => {
   const { user, updateUserProfile } = useAuth();
@@ -31,145 +62,172 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="mx-auto flex max-w-7xl flex-col gap-8 p-4 sm:p-6 lg:p-8 bg-gray-50/30 min-h-screen">
+      
       {/* Page Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-gray-100">
         <div>
-          <h2 className="text-xl font-semibold text-gray-900">My Profile</h2>
-          <p className="text-sm text-gray-500 mt-0.5">Your personal and professional details</p>
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900">My Profile</h2>
+          <p className="mt-1 text-sm text-gray-500">View and update your personal and professional profile details.</p>
         </div>
         {!isEditing && (
-          <Button onClick={() => setIsEditing(true)} variant="outline" size="sm" icon={<FaEdit size={13} />}>
+          <Button 
+            onClick={() => setIsEditing(true)} 
+            variant="outline" 
+            size="sm" 
+            icon={<FaEdit size={13} />}
+            className="rounded-xl shadow-sm self-start sm:self-center"
+          >
             Edit Profile
           </Button>
         )}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Profile Card */}
-        <Card className="p-6 lg:col-span-1">
-          <div className="flex flex-col items-center text-center mb-6">
-            <div className="w-20 h-20 rounded-xl bg-blue-600 flex items-center justify-center text-white text-3xl font-bold mb-4">
-              {user?.name?.charAt(0) || 'U'}
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900">{user?.name}</h3>
-            <p className="text-sm text-gray-500 mt-0.5">{user?.position}</p>
-            <Badge variant="default" className="mt-2 capitalize">{user?.role}</Badge>
-            {user?.department && (
-              <p className="text-xs text-gray-500 mt-2">{user?.department}</p>
-            )}
-          </div>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 items-start">
+        
+        {/* Profile Card Left-Side */}
+        <Card className="overflow-hidden p-0 lg:col-span-1 rounded-2xl border border-gray-100 shadow-sm bg-white">
+          <div className="h-24 bg-gradient-to-tr from-blue-600 via-blue-500 to-indigo-600" />
 
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-md">
-              <FaEnvelope size={13} className="text-gray-400 shrink-0" />
-              <span className="text-sm text-gray-700 truncate">{user?.email}</span>
+          <div className="flex flex-col items-center px-6 pb-6 text-center">
+            <div className="-mt-12 flex h-24 w-24 items-center justify-center rounded-2xl bg-white p-1.5 shadow-md shadow-gray-200/50">
+              <div className="flex h-full w-full items-center justify-center rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-3xl font-extrabold text-white shadow-inner">
+                {user?.name?.charAt(0) || 'U'}
+              </div>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-md">
-              <FaIdBadge size={13} className="text-gray-400 shrink-0" />
-              <span className="text-sm text-gray-700">{user?.id}</span>
+
+            <h3 className="mt-4 text-xl font-bold text-gray-900 tracking-tight">{user?.name}</h3>
+            <p className="mt-1 text-sm font-medium text-gray-500">{user?.position}</p>
+
+            <div className="mt-4 flex items-center gap-2">
+              <Badge variant="default" className="capitalize px-3 py-1 font-semibold rounded-lg text-xs">{user?.role}</Badge>
+              {user?.department && (
+                <Badge variant="outline" className="text-gray-500 border-gray-200 bg-gray-50 px-3 py-1 font-medium rounded-lg text-xs">{user?.department}</Badge>
+              )}
+            </div>
+
+            <div className="mt-6 flex w-full flex-col gap-1 border-t border-gray-100 pt-5 text-left">
+              <div className="flex items-center gap-3 rounded-xl px-3 py-2.5 hover:bg-gray-50/50 transition-colors">
+                <FaEnvelope size={14} className="shrink-0 text-gray-400" />
+                <span className="truncate text-sm font-medium text-gray-600">{user?.email}</span>
+              </div>
+              <div className="flex items-center gap-3 rounded-xl px-3 py-2.5 hover:bg-gray-50/50 transition-colors">
+                <FaIdBadge size={14} className="shrink-0 text-gray-400" />
+                <span className="text-sm font-semibold text-gray-600">{user?.id}</span>
+              </div>
+              <div className="flex items-center gap-3 rounded-xl px-3 py-2.5 hover:bg-gray-50/50 transition-colors">
+                <FaCalendarAlt size={14} className="shrink-0 text-gray-400" />
+                <span className="text-sm font-medium text-gray-500">Joined {user?.joinDate}</span>
+              </div>
             </div>
           </div>
         </Card>
 
-        {/* Details Column */}
-        <div className="lg:col-span-2 flex flex-col gap-6">
+        {/* Details Column Right-Side */}
+        <div className="flex flex-col gap-8 lg:col-span-2">
+          
           {/* Personal Details */}
-          <Card className="p-6">
-            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
-              <FaUser size={15} className="text-gray-400" />
-              Personal Details
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-3 bg-gray-50 rounded-md">
-                <p className="text-xs text-gray-500 font-medium mb-0.5">Employee ID</p>
-                <p className="text-sm font-medium text-gray-900">{user?.id}</p>
-              </div>
-              <div className="p-3 bg-gray-50 rounded-md">
-                <p className="text-xs text-gray-500 font-medium mb-0.5">Join Date</p>
-                <p className="text-sm font-medium text-gray-900">{user?.joinDate}</p>
-              </div>
+          <Card className="p-6 sm:p-8 bg-white rounded-2xl border border-gray-100 shadow-sm">
+            <SectionHeader
+              icon={<FaUser size={14} />}
+              title="Personal Details"
+              action={isEditing && (
+                <div className="flex gap-2">
+                  <Button onClick={handleSave} size="sm" icon={<FaSave size={12} />} className="rounded-xl">Save</Button>
+                  <Button onClick={handleCancel} variant="outline" size="sm" icon={<FaTimes size={12} />} className="rounded-xl">Cancel</Button>
+                </div>
+              )}
+            />
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <InfoTile icon={<FaIdBadge size={15} />} label="Employee ID" value={user?.id} />
+              <InfoTile icon={<FaCalendarAlt size={15} />} label="Join Date" value={user?.joinDate} />
+
               {isEditing ? (
                 <>
-                  <Input label="Phone" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} icon={<FaPhone size={13} />} />
-                  <Input label="Address" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} icon={<FaMapMarkerAlt size={13} />} />
+                  <div className="flex flex-col gap-1">
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-gray-400 px-1">Phone</label>
+                    <Input
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      icon={<FaPhone size={13} className="text-gray-400" />}
+                      className="rounded-xl h-11 bg-gray-50 border border-gray-200 focus:bg-white transition-all"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-gray-400 px-1">Address</label>
+                    <Input
+                      value={formData.address}
+                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                      icon={<FaMapMarkerAlt size={13} className="text-gray-400" />}
+                      className="rounded-xl h-11 bg-gray-50 border border-gray-200 focus:bg-white transition-all"
+                    />
+                  </div>
                 </>
               ) : (
                 <>
-                  <div className="p-3 bg-gray-50 rounded-md">
-                    <p className="text-xs text-gray-500 font-medium mb-0.5">Phone</p>
-                    <p className="text-sm font-medium text-gray-900">{user?.phone || <span className="text-gray-400 italic">Not provided</span>}</p>
-                  </div>
-                  <div className="p-3 bg-gray-50 rounded-md">
-                    <p className="text-xs text-gray-500 font-medium mb-0.5">Address</p>
-                    <p className="text-sm font-medium text-gray-900">{user?.address || <span className="text-gray-400 italic">Not provided</span>}</p>
-                  </div>
+                  <InfoTile icon={<FaPhone size={15} />} label="Phone" value={user?.phone} />
+                  <InfoTile icon={<FaMapMarkerAlt size={15} />} label="Address" value={user?.address} />
                 </>
               )}
             </div>
-            {isEditing && (
-              <div className="flex gap-2 mt-4">
-                <Button onClick={handleSave} size="sm" icon={<FaSave size={13} />}>Save</Button>
-                <Button onClick={handleCancel} variant="outline" size="sm" icon={<FaTimes size={13} />}>Cancel</Button>
-              </div>
-            )}
           </Card>
 
           {/* Job Details */}
-          <Card className="p-6">
-            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
-              <FaBriefcase size={15} className="text-gray-400" />
-              Job Details
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-3 bg-gray-50 rounded-md">
-                <p className="text-xs text-gray-500 font-medium mb-0.5">Department</p>
-                <p className="text-sm font-medium text-gray-900">{user?.department}</p>
+          <Card className="p-6 sm:p-8 bg-white rounded-2xl border border-gray-100 shadow-sm">
+            <SectionHeader icon={<FaBriefcase size={14} />} title="Job Details" />
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <InfoTile icon={<FaBuilding size={15} />} label="Department" value={user?.department} />
+              <InfoTile icon={<FaBriefcase size={15} />} label="Position" value={user?.position} />
+            </div>
+          </Card>
+
+          {/* Salary Information */}
+          <Card className="p-6 sm:p-8 bg-white rounded-2xl border border-gray-100 shadow-sm">
+            <SectionHeader icon={<FaDollarSign size={14} />} title="Salary Information" />
+            <div className="flex items-center justify-between rounded-2xl bg-gradient-to-r from-emerald-50 via-emerald-50/30 to-teal-50/20 p-6 border border-emerald-100/60 shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)]">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-600/90">Annual Base Salary</p>
+                <p className="mt-1.5 text-3xl font-extrabold text-emerald-700 tracking-tight">
+                  ${user?.salary?.toLocaleString()}
+                </p>
               </div>
-              <div className="p-3 bg-gray-50 rounded-md">
-                <p className="text-xs text-gray-500 font-medium mb-0.5">Position</p>
-                <p className="text-sm font-medium text-gray-900">{user?.position}</p>
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-emerald-600 shadow-md shadow-emerald-600/5 border border-emerald-100">
+                <FaDollarSign size={20} />
               </div>
             </div>
           </Card>
 
-          {/* Salary */}
-          <Card className="p-6">
-            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
-              <FaDollarSign size={15} className="text-gray-400" />
-              Salary Information
-            </h3>
-            <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200">
-              <p className="text-xs text-emerald-600 font-medium mb-1">Annual Salary</p>
-              <p className="text-2xl font-bold text-emerald-700">${user?.salary?.toLocaleString()}</p>
-            </div>
-          </Card>
-
-          {/* Documents */}
-          <Card className="p-6">
-            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
-              <FaFileAlt size={15} className="text-gray-400" />
-              Documents
-            </h3>
+          {/* Documents Section */}
+          <Card className="p-6 sm:p-8 bg-white rounded-2xl border border-gray-100 shadow-sm">
+            <SectionHeader icon={<FaFileAlt size={14} />} title="Documents" />
             {user?.documents?.length > 0 ? (
-              <div className="flex flex-col gap-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {user.documents.map((doc, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
-                    <div className="flex items-center gap-3">
-                      <FaFileAlt size={14} className="text-gray-400 shrink-0" />
-                      <div>
-                        <p className="text-sm font-medium text-gray-900">{doc.name}</p>
-                        <p className="text-xs text-gray-500">Uploaded: {doc.uploaded}</p>
+                  <div
+                    key={index}
+                    className="flex items-center justify-between rounded-xl border border-gray-100 bg-white p-4 shadow-[0_2px_8px_-3px_rgba(0,0,0,0.05)] transition-all hover:bg-gray-50/80"
+                  >
+                    <div className="flex min-w-0 items-center gap-3.5">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-500 border border-blue-100/50">
+                        <FaFileAlt size={14} />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-semibold text-gray-800 leading-tight">{doc.name}</p>
+                        <p className="text-[11px] font-medium text-gray-400 mt-1">Uploaded {doc.uploaded}</p>
                       </div>
                     </div>
-                    <Button variant="ghost" size="sm" icon={<FaDownload size={12} />}>View</Button>
+                    <Button variant="ghost" size="sm" icon={<FaDownload size={12} />} className="text-gray-400 hover:text-blue-600 rounded-lg">View</Button>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 bg-gray-50 rounded-lg">
-                <FaFileAlt size={24} className="text-gray-300 mx-auto mb-2" />
-                <p className="text-sm text-gray-500">No documents uploaded</p>
+              <div className="rounded-2xl border border-dashed border-gray-200 bg-gray-50/30 py-12 text-center">
+                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-sm border border-gray-100">
+                  <FaFileAlt size={16} className="text-gray-300" />
+                </div>
+                <p className="text-sm font-semibold text-gray-700">No documents uploaded</p>
+                <p className="mt-0.5 text-xs text-gray-400">Important files and contract PDFs will show up here.</p>
               </div>
             )}
           </Card>
