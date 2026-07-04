@@ -14,7 +14,7 @@ const DashboardLayout = ({ children, title = 'Overview' }) => {
     <div className="flex h-screen w-screen overflow-hidden bg-linear-to-br from-purple-50 via-pink-50/40 to-blue-50 text-slate-800 antialiased">
       
       {/* Sidebar Container */}
-      <div className="hidden md:flex md:flex-shrink-0 border-r border-slate-100/80">
+      <div className="hidden md:flex md:shrink-0 border-r border-slate-100/80">
         <Sidebar />
       </div>
 
