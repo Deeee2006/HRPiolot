@@ -93,13 +93,7 @@ npm run dev
 
 ---
 
-## 🔑 Environment Variables
 
-Create a `.env` file in the **project root** (same level as `package.json`, NOT inside `src/`):
-
-```
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_anon_key
 ```
 
 Restart the dev server after creating or editing this file — Vite only reads env vars at startup.
