@@ -57,13 +57,8 @@ const AdminPayroll = () => {
         </Card>
         <Card>
           <div className="flex items-center gap-4">
-<<<<<<< HEAD
             <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center shrink-0">
               <FaChartBar className="text-emerald-600" size={17} />
-=======
-            <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0">
-              <FaChartLine className="text-emerald-600" size={17} />
->>>>>>> 538f960fe0d377671686f96df0e0381a06e50f4f
             </div>
             <div>
               <p className="text-xs text-gray-500 font-medium">Average Salary</p>
