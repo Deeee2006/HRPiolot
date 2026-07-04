@@ -112,7 +112,6 @@ Deploy on Vercel or Netlify. Add the environment variables above in your deploym
 - Leave management 📄
 - Notifications 🔔
 - Charts & analytics 📈
-- Dark mode 🌙
 
 ---
 
