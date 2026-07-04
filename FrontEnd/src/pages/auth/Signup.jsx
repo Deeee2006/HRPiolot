@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useToast } from '../../context/ToastContext';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Card from '../../components/Card';
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaIdBadge } from 'react-icons/fa';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -14,31 +16,37 @@ const Signup = () => {
     role: 'employee'
   });
   const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { signup } = useAuth();
+  const { addToast } = useToast();
 
   const validateForm = () => {
     const newErrors = {};
     if (!formData.employeeId) newErrors.employeeId = 'Employee ID is required';
     if (!formData.email) newErrors.email = 'Email is required';
+    else if (!formData.email.includes('@')) newErrors.email = 'Invalid email format';
     if (!formData.password) newErrors.password = 'Password is required';
-    if (!formData.confirmPassword) newErrors.confirmPassword = 'Please confirm your password';
-    if (formData.email && !formData.email.includes('@')) newErrors.email = 'Invalid email format';
-    if (formData.password && formData.password.length < 6) newErrors.password = 'Password must be at least 6 characters';
-    if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
+    else if (formData.password.length < 6) newErrors.password = 'Min 6 characters';
+    if (!formData.confirmPassword) newErrors.confirmPassword = 'Confirm your password';
+    else if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      const result = signup(formData.employeeId, formData.email, formData.password, formData.role);
-      if (result.success) {
-        navigate('/employee/dashboard');
-      } else {
-        setErrors({ ...errors, form: result.error });
-      }
+    if (!validateForm()) return;
+    setIsLoading(true);
+    await new Promise(r => setTimeout(r, 400));
+    const result = signup(formData.employeeId, formData.email, formData.password, formData.role);
+    setIsLoading(false);
+    if (result.success) {
+      addToast('Account created successfully! Welcome aboard.', 'success');
+      navigate('/employee/dashboard');
+    } else {
+      setErrors({ ...errors, form: result.error });
     }
   };
 
@@ -48,17 +56,27 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md p-8">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 flex items-center justify-center p-4 relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-purple-200/30 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-pink-200/30 blur-3xl" />
+      </div>
+      <Card className="w-full max-w-md p-8 relative animate-scaleIn">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
-            HRPilot
-          </h1>
-          <p className="text-purple-600">Create your account</p>
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4 shadow-[0_8px_24px_rgba(147,51,234,0.3)] animate-float">
+            <span className="text-2xl font-extrabold text-white">H</span>
+          </div>
+          <h1 className="text-3xl font-extrabold gradient-text mb-1">HRPilot</h1>
+          <p className="text-purple-500 text-sm font-medium">Create your account</p>
         </div>
 
         {errors.form && (
-          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-2xl text-sm font-medium">
+          <div className="mb-4 p-3.5 bg-red-100/80 backdrop-blur-sm border border-red-200 text-red-700 rounded-xl text-sm font-medium flex items-center gap-2 animate-fadeIn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/>
+              <path d="M8 4.5V8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M8 11V11.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
             {errors.form}
           </div>
         )}
@@ -72,6 +90,7 @@ const Signup = () => {
             value={formData.employeeId}
             onChange={handleChange}
             error={errors.employeeId}
+            icon={<FaIdBadge size={14} />}
           />
           <Input
             label="Email"
@@ -81,45 +100,60 @@ const Signup = () => {
             value={formData.email}
             onChange={handleChange}
             error={errors.email}
+            icon={<FaEnvelope size={15} />}
           />
-          <Input
-            label="Password"
-            name="password"
-            type="password"
-            placeholder="Create a password"
-            value={formData.password}
-            onChange={handleChange}
-            error={errors.password}
-          />
+          <div className="space-y-1.5">
+            <Input
+              label="Password"
+              name="password"
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Create a password"
+              value={formData.password}
+              onChange={handleChange}
+              error={errors.password}
+              icon={<FaLock size={15} />}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="text-xs text-purple-500 hover:text-purple-700 font-medium transition-colors flex items-center gap-1 ml-1"
+            >
+              {showPassword ? <FaEyeSlash size={12} /> : <FaEye size={12} />}
+              {showPassword ? 'Hide' : 'Show'}
+            </button>
+          </div>
           <Input
             label="Confirm Password"
             name="confirmPassword"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             placeholder="Confirm your password"
             value={formData.confirmPassword}
             onChange={handleChange}
             error={errors.confirmPassword}
+            icon={<FaLock size={15} />}
           />
           <div className="space-y-2">
-            <label className="text-sm font-medium text-purple-700">Role</label>
-            <select
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-2xl bg-white/60 backdrop-blur-sm border-2 border-purple-200 text-purple-900 focus:outline-none focus:border-purple-400 focus:shadow-[0_4px_12px_rgba(147,51,234,0.15)] transition-all duration-300"
-            >
-              <option value="employee">Employee</option>
-              <option value="admin">Admin</option>
-            </select>
+            <label className="text-sm font-semibold text-purple-700">Role</label>
+            <div className="relative">
+              <select
+                name="role"
+                value={formData.role}
+                onChange={handleChange}
+                className="w-full px-4 py-2.5 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-purple-200/60 text-purple-900 focus:outline-none focus:border-purple-400 focus:shadow-[0_4px_16px_rgba(147,51,234,0.1)] transition-all duration-300 appearance-none glass-select"
+              >
+                <option value="employee">Employee</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
           </div>
-          <Button type="submit" className="w-full" size="lg">
-            Sign Up
+          <Button type="submit" className="w-full" size="lg" loading={isLoading}>
+            {isLoading ? 'Creating Account...' : 'Sign Up'}
           </Button>
         </form>
 
-        <p className="text-center mt-6 text-purple-600">
+        <p className="text-center mt-6 text-purple-500 text-sm">
           Already have an account?{' '}
-          <Link to="/login" className="font-semibold text-purple-800 hover:underline">
+          <Link to="/login" className="font-semibold text-purple-700 hover:text-purple-900 hover:underline transition-colors">
             Sign In
           </Link>
         </p>

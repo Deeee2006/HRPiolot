@@ -1,7 +1,7 @@
-import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from '../context/AuthContext';
 import { EmployeeProvider } from '../context/EmployeeContext';
+import { ToastProvider } from '../context/ToastContext';
 import ProtectedRoute from './ProtectedRoute';
 
 // Auth Pages
@@ -172,7 +172,9 @@ const RootRoutes = () => {
   return (
     <AuthProvider>
       <EmployeeProvider>
-        <AppRoutes />
+        <ToastProvider>
+          <AppRoutes />
+        </ToastProvider>
       </EmployeeProvider>
     </AuthProvider>
   );

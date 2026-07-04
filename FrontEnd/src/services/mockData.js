@@ -151,7 +151,8 @@ export const getEmployeeByEmail = (email) => mockEmployees.find(emp => emp.email
 export const authenticateUser = (email, password) => {
   const user = mockEmployees.find(emp => emp.email === email && emp.password === password);
   if (user) {
-    const { password: _, ...userWithoutPassword } = user;
+    // eslint-disable-next-line no-unused-vars
+    const { password, ...userWithoutPassword } = user;
     return userWithoutPassword;
   }
   return null;

@@ -1,11 +1,15 @@
-import { createContext, useContext, useState } from 'react';
-import { getAllEmployees, getEmployeeById } from '../services/mockData';
+import { createContext, useContext, useState, useCallback } from 'react';
+import { getAllEmployees } from '../services/mockData';
 
 const EmployeeContext = createContext(null);
 
 export const EmployeeProvider = ({ children }) => {
-  const [employees, setEmployees] = useState(getAllEmployees());
+  const [employees, setEmployees] = useState(getAllEmployees);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+
+  const getEmployeeById = useCallback((id) => {
+    return employees.find(emp => emp.id === id);
+  }, [employees]);
 
   const updateEmployee = (employeeId, updatedData) => {
     setEmployees(prev => prev.map(emp => 
@@ -17,6 +21,8 @@ export const EmployeeProvider = ({ children }) => {
   };
 
   const addLeaveRequest = (employeeId, leaveRequest) => {
+    const employee = getEmployeeById(employeeId);
+    if (!employee) return;
     const newRequest = {
       id: Date.now(),
       ...leaveRequest,
@@ -24,7 +30,7 @@ export const EmployeeProvider = ({ children }) => {
       comments: ''
     };
     updateEmployee(employeeId, {
-      leaveRequests: [...(getEmployeeById(employeeId)?.leaveRequests || []), newRequest]
+      leaveRequests: [...(employee.leaveRequests || []), newRequest]
     });
   };
 
@@ -68,13 +74,15 @@ export const EmployeeProvider = ({ children }) => {
       addLeaveRequest,
       updateLeaveStatus,
       addAttendance,
-      updateSalary
+      updateSalary,
+      getEmployeeById
     }}>
       {children}
     </EmployeeContext.Provider>
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useEmployee = () => {
   const context = useContext(EmployeeContext);
   if (!context) {
