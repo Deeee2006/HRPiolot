@@ -152,10 +152,9 @@ const AdminAttendance = () => {
 
           <div className="flex items-center gap-3">
             <div className="relative">
-              <FaSearch
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
-                size={13}
-              />
+              <span className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
+                <FaSearch size={13} />
+              </span>
               <input
                 placeholder="Search..."
                 value={searchTerm}
@@ -165,10 +164,9 @@ const AdminAttendance = () => {
             </div>
 
             <div className="relative">
-              <FaFilter
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
-                size={13}
-              />
+              <span className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
+                <FaFilter size={13} />
+              </span>
               <select
                 value={selectedFilter}
                 onChange={(e) => setSelectedFilter(e.target.value)}
