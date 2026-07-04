@@ -1,8 +1,12 @@
-function App() {
+import { BrowserRouter } from 'react-router-dom';
+import RootRoutes from './routes';
 
+function App() {
   return (
-    <h1 className="bg-amber-600 m-8 p-8 text-center">Huii</h1>
-  )
+    <BrowserRouter>
+      <RootRoutes />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
