@@ -2,17 +2,16 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
 
-const DashboardLayout = ({ children, title = 'Overview' }) => {
-  // Time onusare greeting select korar jonne (Optional, kintu dashboard-e bhalo lagbe)
-  const getGreeting = () => {
-    const hrs = new Date().getHours();
-    if (hrs < 12) return 'Good morning';
-    if (hrs < 18) return 'Good afternoon';
-    return 'Good evening';
-  };
+const getGreeting = () => {
+  const hour = new Date().getHours();
+  if (hour < 12) return 'Good morning';
+  if (hour < 18) return 'Good afternoon';
+  return 'Good evening';
+};
 
+const DashboardLayout = ({ children, title = 'Overview' }) => {
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-gradient-to-br from-purple-50 via-pink-50/40 to-blue-50 text-slate-800 antialiased">
+    <div className="flex h-screen w-screen overflow-hidden bg-linear-to-br from-purple-50 via-pink-50/40 to-blue-50 text-slate-800 antialiased">
       
       {/* Sidebar Container */}
       <div className="hidden md:flex md:flex-shrink-0 border-r border-slate-100/80">
@@ -32,7 +31,7 @@ const DashboardLayout = ({ children, title = 'Overview' }) => {
             <div className="animate-fadeInUp border-b border-slate-100 pb-6">
               <div className="flex items-center gap-2.5">
                 <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
-                  {getGreeting()}, Partner! 👋
+                  {getGreeting()}, Partner!
                 </h1>
               </div>
               <p className="mt-2 text-sm md:text-base text-slate-500/90 font-medium">
@@ -44,7 +43,6 @@ const DashboardLayout = ({ children, title = 'Overview' }) => {
             <div className="animate-fadeInUp [animation-delay:200ms]">
               {children}
             </div>
-
           </div>
         </main>
       </div>

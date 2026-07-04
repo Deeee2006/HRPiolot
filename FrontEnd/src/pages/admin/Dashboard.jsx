@@ -24,18 +24,18 @@ const AdminDashboard = () => {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-purple-800">Admin Dashboard</h2>
-          <p className="text-purple-500 text-sm mt-0.5">Overview of your organization</p>
+          <p className="text-purple-500 text-sm">Overview of your organization</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, i) => (
-          <Card key={i} className="p-5 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] transition-all duration-300">
-            <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${stat.gradient} flex items-center justify-center text-white mb-3 shadow-[0_4px_12px_${stat.shadow}]`}>
+          <Card key={i} className="h-full p-4 rounded-2xl flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] transition-all duration-300">
+            <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${stat.gradient} flex items-center justify-center text-white shadow-[0_4px_12px_${stat.shadow}]`}>
               <stat.icon size={20} />
             </div>
             <p className="text-xl font-bold text-purple-800">{stat.value}</p>
@@ -45,12 +45,12 @@ const AdminDashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6">
-          <h3 className="text-base font-bold text-purple-800 mb-4 flex items-center gap-2">
+        <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+          <h3 className="text-base font-bold text-purple-800 flex items-center gap-2">
             <FaChartLine size={16} />
             Recent Leave Activity
           </h3>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             {recentActivities.length > 0 ? recentActivities.map((act, i) => (
               <div key={act.id || i} className="flex items-center justify-between p-3 bg-purple-50/60 rounded-xl">
                 <div>
@@ -65,12 +65,12 @@ const AdminDashboard = () => {
           </div>
         </Card>
 
-        <Card className="p-6">
-          <h3 className="text-base font-bold text-purple-800 mb-4 flex items-center gap-2">
+        <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+          <h3 className="text-base font-bold text-purple-800 flex items-center gap-2">
             <FaChartBar size={16} />
             Department Distribution
           </h3>
-          <div className="space-y-3">
+          <div className="flex flex-col gap-3">
             {deptData.map((dept, i) => (
               <div key={i}>
                 <div className="flex justify-between items-center mb-1">
@@ -87,8 +87,8 @@ const AdminDashboard = () => {
         </Card>
       </div>
 
-      <Card className="p-6">
-        <h3 className="text-base font-bold text-purple-800 mb-4 flex items-center gap-2">
+      <Card className="p-4 rounded-2xl flex flex-col gap-4">
+        <h3 className="text-base font-bold text-purple-800 flex items-center gap-2">
           <FaExclamationCircle size={16} />
           Pending Actions
         </h3>
@@ -96,23 +96,23 @@ const AdminDashboard = () => {
           <div onClick={() => navigate('/admin/leave')} className="p-4 bg-amber-50/80 rounded-xl border border-amber-200/60 cursor-pointer hover:shadow-lg transition-all hover:-translate-y-0.5">
             <p className="text-2xl font-bold text-amber-600">{employees.reduce((s, e) => s + (e.leaveRequests?.filter(r => r.status === 'pending').length || 0), 0)}</p>
             <p className="text-sm text-amber-700 font-medium">Leave Requests</p>
-            <p className="text-xs text-amber-500 mt-0.5">Awaiting approval</p>
+            <p className="text-xs text-amber-500">Awaiting approval</p>
           </div>
           <div className="p-4 bg-blue-50/80 rounded-xl border border-blue-200/60 cursor-pointer hover:shadow-lg transition-all hover:-translate-y-0.5">
             <p className="text-2xl font-bold text-blue-600">2</p>
             <p className="text-sm text-blue-700 font-medium">Attendance Issues</p>
-            <p className="text-xs text-blue-500 mt-0.5">Need review</p>
+            <p className="text-xs text-blue-500">Need review</p>
           </div>
           <div className="p-4 bg-purple-50/80 rounded-xl border border-purple-200/60 cursor-pointer hover:shadow-lg transition-all hover:-translate-y-0.5">
             <p className="text-2xl font-bold text-purple-600">1</p>
             <p className="text-sm text-purple-700 font-medium">Onboarding Tasks</p>
-            <p className="text-xs text-purple-500 mt-0.5">Incomplete</p>
+            <p className="text-xs text-purple-500">Incomplete</p>
           </div>
         </div>
       </Card>
 
-      <Card className="p-6">
-        <div className="flex items-center justify-between mb-4">
+      <div className="bg-white rounded-2xl p-4 flex flex-col gap-4">
+        <div className="flex items-center justify-between">
           <h3 className="text-base font-bold text-purple-800">Employee Overview</h3>
           <button onClick={() => navigate('/admin/employees')} className="text-xs font-semibold text-purple-500 hover:text-purple-700 transition-colors flex items-center gap-1">
             View All <FaArrowRight size={10} />
@@ -150,7 +150,7 @@ const AdminDashboard = () => {
             </tbody>
           </table>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };

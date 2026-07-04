@@ -58,11 +58,13 @@ const AdminLeave = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-purple-800">Leave Approvals</h2>
+    <div className="p-6 flex flex-col gap-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-purple-800">Leave Approvals</h2>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-amber-100/80 flex items-center justify-center">
               <FaClock className="text-amber-600" size={18} />
@@ -73,7 +75,7 @@ const AdminLeave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-emerald-100/80 flex items-center justify-center">
               <FaCheck className="text-emerald-600" size={18} />
@@ -84,7 +86,7 @@ const AdminLeave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-red-100/80 flex items-center justify-center">
               <FaTimes className="text-red-600" size={18} />
@@ -95,7 +97,7 @@ const AdminLeave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-100/80 flex items-center justify-center">
               <FaCalendar className="text-purple-600" size={18} />
@@ -108,21 +110,21 @@ const AdminLeave = () => {
         </Card>
       </div>
 
-      <Card className="p-6">
-        <h3 className="text-base font-bold text-purple-800 mb-4">
+      <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+        <h3 className="text-base font-bold text-purple-800">
           Pending Requests
           {pendingRequests.length > 0 && (
             <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-amber-100 text-amber-700 font-semibold">{pendingRequests.length}</span>
           )}
         </h3>
         {pendingRequests.length > 0 ? (
-          <div className="space-y-3">
+          <div className="flex flex-col gap-3">
             {pendingRequests.map((request) => (
               <div key={request.id} className="p-4 bg-amber-50/60 rounded-xl border border-amber-200/60 hover:border-amber-300/60 transition-colors">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm shadow-[0_4px_8px_rgba(147,51,234,0.2)]">
+                      <div className="w-9 h-9 rounded-xl bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm shadow-[0_4px_8px_rgba(147,51,234,0.2)]">
                         {request.employeeName.charAt(0)}
                       </div>
                       <div>
@@ -167,8 +169,8 @@ const AdminLeave = () => {
         )}
       </Card>
 
-      <Card className="p-6">
-        <h3 className="text-base font-bold text-purple-800 mb-4">All Leave History</h3>
+      <div className="bg-white rounded-2xl p-4 flex flex-col gap-4">
+        <h3 className="text-base font-bold text-purple-800">All Leave History</h3>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -184,9 +186,9 @@ const AdminLeave = () => {
             <tbody>
               {allLeaveRequests.map((request) => (
                 <tr key={request.id} className="border-b border-purple-50/60 hover:bg-purple-50/40 transition-colors">
-                  <td className="py-4 px-4">
+                  <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white text-sm font-bold">
+                      <div className="w-8 h-8 rounded-full bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white text-sm font-bold">
                         {request.employeeName.charAt(0)}
                       </div>
                       <div>
@@ -195,27 +197,27 @@ const AdminLeave = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 px-4 text-sm text-purple-500">{request.type}</td>
-                  <td className="py-4 px-4 text-sm text-purple-500">
+                  <td className="py-3 px-4 text-sm text-purple-500">{request.type}</td>
+                  <td className="py-3 px-4 text-sm text-purple-500">
                     {request.startDate}{request.startDate !== request.endDate ? ` — ${request.endDate}` : ''}
                   </td>
-                  <td className="py-4 px-4 text-sm text-purple-500 max-w-[200px] truncate" title={request.reason}>{request.reason}</td>
-                  <td className="py-4 px-4">{getStatusBadge(request.status)}</td>
-                  <td className="py-4 px-4 text-sm text-purple-400">{request.comments || '—'}</td>
+                  <td className="py-3 px-4 text-sm text-purple-500 max-w-[200px] truncate" title={request.reason}>{request.reason}</td>
+                  <td className="py-3 px-4">{getStatusBadge(request.status)}</td>
+                  <td className="py-3 px-4 text-sm text-purple-400">{request.comments || '—'}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </Card>
+      </div>
 
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         title={`${action === 'approved' ? 'Approve' : 'Reject'} Leave Request`}
       >
-        <div className="space-y-4">
-          <div className="p-4 bg-purple-50/60 rounded-xl space-y-2">
+        <div className="flex flex-col gap-4">
+          <div className="p-4 bg-purple-50/60 rounded-xl flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <FaUser size={13} className="text-purple-400" />
               <span className="text-sm text-purple-500">Employee</span>
@@ -235,7 +237,7 @@ const AdminLeave = () => {
             </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <label className="text-sm font-semibold text-purple-700">Comments <span className="text-purple-400 font-normal">(Optional)</span></label>
             <textarea
               value={comment}

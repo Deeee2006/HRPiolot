@@ -62,10 +62,12 @@ const Attendance = () => {
   const rate = attendanceRecords.length > 0 ? Math.round((presentCount / attendanceRecords.length) * 100) : 0;
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-purple-800">Attendance</h2>
+    <div className="p-6 flex flex-col gap-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-purple-800">Attendance</h2>
+      </div>
 
-      <Card className="p-6">
+      <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-xl bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white shadow-[0_8px_16px_rgba(147,51,234,0.25)]">
@@ -90,7 +92,7 @@ const Attendance = () => {
         </div>
 
         {(checkInTime || checkOutTime) && (
-          <div className="mt-5 grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             <div className="p-4 bg-emerald-50/80 rounded-xl border border-emerald-100/50 text-center">
               <p className="text-xs text-emerald-600 font-semibold">Check In</p>
               <p className="text-2xl font-bold text-emerald-700">{checkInTime || '--:--'}</p>
@@ -103,8 +105,8 @@ const Attendance = () => {
         )}
       </Card>
 
-      <Card className="p-6">
-        <h3 className="text-base font-bold text-purple-800 mb-4 flex items-center gap-2">
+      <div className="bg-white rounded-2xl p-4 flex flex-col gap-4">
+        <h3 className="text-base font-bold text-purple-800 flex items-center gap-2">
           <FaHistory size={16} />
           Attendance History
         </h3>
@@ -142,10 +144,10 @@ const Attendance = () => {
             </tbody>
           </table>
         </div>
-      </Card>
+      </div>
 
-      <Card className="p-6">
-        <h3 className="text-base font-bold text-purple-800 mb-4">Weekly Summary</h3>
+      <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+        <h3 className="text-base font-bold text-purple-800">Weekly Summary</h3>
         {attendanceRecords.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="p-4 bg-emerald-50/80 rounded-xl border border-emerald-100/50 text-center">

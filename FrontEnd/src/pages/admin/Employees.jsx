@@ -26,11 +26,13 @@ const Employees = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-purple-800">Employees</h2>
+    <div className="p-6 flex flex-col gap-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-purple-800">Employees</h2>
+      </div>
 
-      <Card className="p-6">
-        <div className="flex flex-col sm:flex-row gap-4 mb-6">
+      <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+        <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1 relative">
             <FaSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400" size={15} />
             <Input
@@ -69,7 +71,7 @@ const Employees = () => {
             <tbody>
               {filteredEmployees.map((employee) => (
                 <tr key={employee.id} className="border-b border-purple-50/60 hover:bg-purple-50/40 transition-colors">
-                  <td className="py-4 px-4">
+                  <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold shadow-[0_4px_8px_rgba(147,51,234,0.2)]">
                         {employee.name.charAt(0)}
@@ -83,28 +85,28 @@ const Employees = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 px-4">
-                    <div className="flex items-center gap-2 text-sm text-purple-500">
+                  <td className="py-3 px-4 text-sm text-purple-500">
+                    <div className="flex items-center gap-2">
                       <FaMapMarkerAlt size={13} className="text-purple-400" />
                       {employee.department}
                     </div>
                   </td>
-                  <td className="py-4 px-4">
-                    <div className="flex items-center gap-2 text-sm text-purple-500">
+                  <td className="py-3 px-4 text-sm text-purple-500">
+                    <div className="flex items-center gap-2">
                       <FaBriefcase size={13} className="text-purple-400" />
                       {employee.position}
                     </div>
                   </td>
-                  <td className="py-4 px-4">
-                    <div className="flex items-center gap-2 text-sm text-purple-500">
+                  <td className="py-3 px-4 text-sm text-purple-500">
+                    <div className="flex items-center gap-2">
                       <FaCalendar size={13} className="text-purple-400" />
                       {employee.joinDate}
                     </div>
                   </td>
-                  <td className="py-4 px-4">
+                  <td className="py-3 px-4">
                     <Badge variant="success">Active</Badge>
                   </td>
-                  <td className="py-4 px-4">
+                  <td className="py-3 px-4">
                     <Button variant="outline" size="sm" icon={<FaUser size={13} />} onClick={() => handleViewEmployee(employee)}>
                       View
                     </Button>
@@ -135,7 +137,7 @@ const Employees = () => {
         {departments.filter(d => d !== 'All').map((dept) => {
           const count = employees.filter(e => e.department === dept).length;
           return (
-            <Card key={dept} className="p-4 text-center">
+            <Card key={dept} className="p-4 rounded-2xl flex flex-col justify-between h-full text-center">
               <p className="text-2xl font-bold text-purple-600">{count}</p>
               <p className="text-sm text-purple-700 font-medium">{dept}</p>
             </Card>

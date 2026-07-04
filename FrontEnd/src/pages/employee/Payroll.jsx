@@ -39,13 +39,15 @@ const Payroll = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-purple-800">Payroll</h2>
+    <div className="p-6 flex flex-col gap-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-purple-800">Payroll</h2>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card className="p-5">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(147,51,234,0.25)]">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(147,51,234,0.25)]">
               <FaWallet size={22} />
             </div>
             <div>
@@ -54,9 +56,9 @@ const Payroll = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-5">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]">
               <FaChartLine size={22} />
             </div>
             <div>
@@ -65,9 +67,9 @@ const Payroll = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-5">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(59,130,246,0.25)]">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(59,130,246,0.25)]">
               <FaCalendar size={22} />
             </div>
             <div>
@@ -79,12 +81,12 @@ const Payroll = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6">
-          <h3 className="text-base font-bold text-purple-800 mb-4 flex items-center gap-2">
+        <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+          <h3 className="text-base font-bold text-purple-800 flex items-center gap-2">
             <FaArrowUp size={14} className="text-emerald-500" />
             Salary Breakdown
           </h3>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             {salaryBreakdown.map((item, index) => (
               <div key={index} className={`flex items-center justify-between p-3 ${item.bg} rounded-xl`}>
                 <span className="text-sm font-medium text-purple-700">{item.label}</span>
@@ -98,12 +100,12 @@ const Payroll = () => {
           </div>
         </Card>
 
-        <Card className="p-6">
-          <h3 className="text-base font-bold text-purple-800 mb-4 flex items-center gap-2">
+        <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+          <h3 className="text-base font-bold text-purple-800 flex items-center gap-2">
             <FaArrowDown size={14} className="text-red-500" />
             Deductions
           </h3>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             {deductions.map((item, index) => (
               <div key={index} className="flex items-center justify-between p-3 bg-red-50/60 rounded-xl">
                 <span className="text-sm font-medium text-red-700">{item.label}</span>
@@ -118,15 +120,15 @@ const Payroll = () => {
         </Card>
       </div>
 
-      <Card className="p-6">
-        <div className="p-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white shadow-[0_8px_24px_rgba(147,51,234,0.3)]">
+      <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+        <div className="p-6 bg-linear-to-r from-purple-500 to-pink-500 rounded-xl text-white shadow-[0_8px_24px_rgba(147,51,234,0.3)]">
           <p className="text-sm font-medium opacity-90">Net Monthly Salary</p>
           <p className="text-4xl font-extrabold tracking-tight">${netSalary.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
         </div>
       </Card>
 
-      <Card className="p-6">
-        <h3 className="text-base font-bold text-purple-800 mb-4">Payment History</h3>
+      <div className="bg-white rounded-2xl p-4 flex flex-col gap-4">
+        <h3 className="text-base font-bold text-purple-800">Payment History</h3>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -155,7 +157,7 @@ const Payroll = () => {
             </tbody>
           </table>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };

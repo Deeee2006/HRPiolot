@@ -58,7 +58,7 @@ const Sidebar = () => {
       <aside className={`
         fixed lg:sticky top-0 left-0 z-40
         w-64 min-h-screen
-        bg-gradient-to-b from-purple-50/90 via-pink-50/80 to-purple-50/90
+        bg-linear-to-b from-purple-50/90 via-pink-50/80 to-purple-50/90
         backdrop-blur-xl border-r border-purple-100/60
         p-4 flex flex-col
         transition-transform duration-300 ease-in-out
@@ -89,7 +89,7 @@ const Sidebar = () => {
                 onClick={() => setIsMobileOpen(false)}
                 className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-all duration-200 group ${
                   active
-                    ? 'bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-[0_4px_12px_rgba(147,51,234,0.25)]'
+                    ? 'bg-linear-to-r from-purple-500 to-purple-600 text-white shadow-[0_4px_12px_rgba(147,51,234,0.25)]'
                     : 'text-purple-600/80 hover:bg-purple-100/60 hover:text-purple-700'
                 }`}
                 style={{ animationDelay: `${i * 40}ms` }}

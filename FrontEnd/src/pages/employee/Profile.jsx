@@ -31,7 +31,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="p-6 flex flex-col gap-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-purple-800">My Profile</h2>
         {!isEditing && (
@@ -42,9 +42,9 @@ const Profile = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card className="p-6 lg:col-span-1">
+        <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full lg:col-span-1">
           <div className="flex flex-col items-center text-center">
-            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white text-3xl font-bold shadow-[0_8px_24px_rgba(147,51,234,0.3)] mb-4">
+            <div className="w-24 h-24 rounded-2xl bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white text-3xl font-bold shadow-[0_8px_24px_rgba(147,51,234,0.3)] mb-4">
               {user?.name?.charAt(0) || 'U'}
             </div>
             <h3 className="text-xl font-bold text-purple-800">{user?.name}</h3>
@@ -55,7 +55,7 @@ const Profile = () => {
             )}
           </div>
 
-          <div className="mt-6 space-y-2.5">
+          <div className="flex flex-col gap-2.5">
             <div className="flex items-center gap-3 p-2.5 bg-purple-50/60 rounded-xl">
               <FaEnvelope size={14} className="text-purple-400" />
               <span className="text-sm text-purple-700 truncate">{user?.email}</span>
@@ -67,9 +67,9 @@ const Profile = () => {
           </div>
         </Card>
 
-        <div className="lg:col-span-2 space-y-6">
-          <Card className="p-6">
-            <h3 className="text-base font-bold text-purple-800 mb-4 flex items-center gap-2">
+        <div className="lg:col-span-2 flex flex-col gap-6">
+          <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+            <h3 className="text-base font-bold text-purple-800 flex items-center gap-2">
               <FaUser size={16} />
               Personal Details
             </h3>
@@ -108,8 +108,8 @@ const Profile = () => {
             )}
           </Card>
 
-          <Card className="p-6">
-            <h3 className="text-base font-bold text-purple-800 mb-4 flex items-center gap-2">
+          <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+            <h3 className="text-base font-bold text-purple-800 flex items-center gap-2">
               <FaBriefcase size={16} />
               Job Details
             </h3>
@@ -125,8 +125,8 @@ const Profile = () => {
             </div>
           </Card>
 
-          <Card className="p-6">
-            <h3 className="text-base font-bold text-purple-800 mb-4 flex items-center gap-2">
+          <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+            <h3 className="text-base font-bold text-purple-800 flex items-center gap-2">
               <FaDollarSign size={16} />
               Salary Information
             </h3>
@@ -136,13 +136,13 @@ const Profile = () => {
             </div>
           </Card>
 
-          <Card className="p-6">
-            <h3 className="text-base font-bold text-purple-800 mb-4 flex items-center gap-2">
+          <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+            <h3 className="text-base font-bold text-purple-800 flex items-center gap-2">
               <FaFileAlt size={16} />
               Documents
             </h3>
             {user?.documents?.length > 0 ? (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 {user.documents.map((doc, index) => (
                   <div key={index} className="flex items-center justify-between p-3 bg-purple-50/60 rounded-xl">
                     <div className="flex items-center gap-3">

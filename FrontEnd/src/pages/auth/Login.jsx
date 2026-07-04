@@ -55,7 +55,7 @@ const Login = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 flex relative overflow-hidden">
+    <div className="min-h-screen bg-linear-to-br from-purple-50 via-pink-50 to-blue-50 flex relative overflow-hidden">
       {/* Decorative blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-purple-200/25 blur-3xl" />
@@ -67,7 +67,7 @@ const Login = () => {
       {/* Left: Branding */}
       <div className="hidden lg:flex w-1/2 min-h-screen relative items-center justify-center p-12">
         <div className="max-w-md animate-fadeIn">
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6 shadow-[0_12px_36px_rgba(147,51,234,0.35)] animate-float">
+          <div className="w-20 h-20 rounded-2xl bg-linear-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6 shadow-[0_12px_36px_rgba(147,51,234,0.35)] animate-float">
             <span className="text-3xl font-extrabold text-white">H</span>
           </div>
           <h1 className="text-4xl font-extrabold gradient-text mb-3">HRPilot</h1>
@@ -102,7 +102,7 @@ const Login = () => {
         <div className="w-full max-w-md animate-scaleIn">
           {/* Mobile logo */}
           <div className="text-center lg:hidden mb-6">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-3 shadow-[0_8px_24px_rgba(147,51,234,0.3)]">
+            <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-3 shadow-[0_8px_24px_rgba(147,51,234,0.3)]">
               <span className="text-xl font-extrabold text-white">H</span>
             </div>
             <h1 className="text-2xl font-extrabold gradient-text">HRPilot</h1>

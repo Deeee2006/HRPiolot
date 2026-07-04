@@ -49,7 +49,7 @@ const Leave = () => {
   const rejected = leaveRequests.filter(r => r.status === 'rejected').length;
 
   return (
-    <div className="space-y-6">
+    <div className="p-6 flex flex-col gap-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-purple-800">Leave Requests</h2>
         <Button onClick={() => setIsModalOpen(true)} size="sm" icon={<FaPlus size={14} />}>
@@ -58,7 +58,7 @@ const Leave = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-amber-100/80 flex items-center justify-center">
               <FaCalendar className="text-amber-600" size={18} />
@@ -69,7 +69,7 @@ const Leave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-emerald-100/80 flex items-center justify-center">
               <FaFileAlt className="text-emerald-600" size={18} />
@@ -80,7 +80,7 @@ const Leave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-100/80 flex items-center justify-center">
               <FaClock className="text-purple-600" size={18} />
@@ -91,7 +91,7 @@ const Leave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-red-100/80 flex items-center justify-center">
               <FaFileAlt className="text-red-600" size={18} />
@@ -104,9 +104,9 @@ const Leave = () => {
         </Card>
       </div>
 
-      <Card className="p-6">
-        <h3 className="text-base font-bold text-purple-800 mb-4">Leave History</h3>
-        <div className="space-y-3">
+      <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+        <h3 className="text-base font-bold text-purple-800">Leave History</h3>
+        <div className="flex flex-col gap-3">
           {leaveRequests.length === 0 && (
             <div className="text-center py-10">
               <FaFileAlt size={36} className="text-purple-300 mx-auto mb-3" />
@@ -136,8 +136,8 @@ const Leave = () => {
       </Card>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Apply for Leave">
-        <div className="space-y-4">
-          <div className="space-y-2">
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
             <label className="text-sm font-semibold text-purple-700">Leave Type</label>
             <select
               value={formData.type}
@@ -158,7 +158,7 @@ const Leave = () => {
             <Input label="End Date" type="date" value={formData.endDate} onChange={(e) => setFormData({ ...formData, endDate: e.target.value })} error={errors.endDate} />
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <label className="text-sm font-semibold text-purple-700">Reason</label>
             <textarea
               value={formData.reason}

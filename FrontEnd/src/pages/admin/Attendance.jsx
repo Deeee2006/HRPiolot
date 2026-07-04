@@ -56,8 +56,8 @@ const AdminAttendance = () => {
   const rate = stats.total > 0 ? Math.round((stats.present / stats.total) * 100) : 0;
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="p-6 flex flex-col gap-6">
+      <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-purple-800">Attendance Overview</h2>
         <div className="flex items-center gap-3">
           <FaCalendar className="text-purple-400" size={18} />
@@ -71,7 +71,7 @@ const AdminAttendance = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-emerald-100/80 flex items-center justify-center">
               <FaCheckCircle className="text-emerald-600" size={18} />
@@ -82,7 +82,7 @@ const AdminAttendance = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-red-100/80 flex items-center justify-center">
               <FaTimesCircle className="text-red-600" size={18} />
@@ -93,7 +93,7 @@ const AdminAttendance = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-amber-100/80 flex items-center justify-center">
               <FaExclamationCircle className="text-amber-600" size={18} />
@@ -104,7 +104,7 @@ const AdminAttendance = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-100/80 flex items-center justify-center">
               <FaCalendar className="text-purple-600" size={18} />
@@ -117,8 +117,8 @@ const AdminAttendance = () => {
         </Card>
       </div>
 
-      <Card className="p-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+      <div className="bg-white rounded-2xl p-4 flex flex-col gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <h3 className="text-base font-bold text-purple-800">Employee Attendance</h3>
           <div className="flex items-center gap-3">
             <div className="relative flex-1 sm:w-48">
@@ -157,7 +157,7 @@ const AdminAttendance = () => {
             <tbody>
               {filteredData.map((employee) => (
                 <tr key={employee.id} className="border-b border-purple-50/60 hover:bg-purple-50/40 transition-colors">
-                  <td className="py-4 px-4">
+                  <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
                       <div className="w-9 h-9 rounded-xl bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm shadow-[0_4px_8px_rgba(147,51,234,0.2)]">
                         {employee.name.charAt(0)}
@@ -168,10 +168,10 @@ const AdminAttendance = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 px-4 text-sm text-purple-500">{employee.department}</td>
-                  <td className="py-4 px-4 text-sm text-purple-500 font-mono">{employee.checkIn || '--:--'}</td>
-                  <td className="py-4 px-4 text-sm text-purple-500 font-mono">{employee.checkOut || '--:--'}</td>
-                  <td className="py-4 px-4">
+                  <td className="py-3 px-4 text-sm text-purple-500">{employee.department}</td>
+                  <td className="py-3 px-4 text-sm text-purple-500 font-mono">{employee.checkIn || '--:--'}</td>
+                  <td className="py-3 px-4 text-sm text-purple-500 font-mono">{employee.checkOut || '--:--'}</td>
+                  <td className="py-3 px-4">
                     <div className="flex items-center gap-2">
                       {getStatusIcon(employee.todayStatus)}
                       {getStatusBadge(employee.todayStatus)}
@@ -189,7 +189,7 @@ const AdminAttendance = () => {
             <p className="text-purple-400 text-sm">No attendance records found</p>
           </div>
         )}
-      </Card>
+      </div>
     </div>
   );
 };

@@ -54,11 +54,11 @@ const EmployeeDashboard = () => {
   const pendingLeaves = leaveReqs.filter(l => l.status === 'pending').length;
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-purple-800">Welcome back, {user?.name?.split(' ')[0]}!</h2>
-          <p className="text-purple-500 text-sm mt-0.5">Here's what's happening today.</p>
+          <p className="text-purple-500 text-sm">Here's what's happening today.</p>
         </div>
         <div className="hidden sm:flex items-center gap-2 px-3 py-2 bg-white/40 backdrop-blur-sm rounded-xl border border-purple-100/50">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -66,19 +66,19 @@ const EmployeeDashboard = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {cards.map((card, index) => (
           <Card
             key={index}
-            className="p-5 group cursor-pointer hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] transition-all duration-300"
+            className="h-full p-4 rounded-2xl flex flex-col justify-between group cursor-pointer hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] transition-all duration-300"
             onClick={card.onClick}
           >
-            <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${card.gradient} flex items-center justify-center text-white mb-3 shadow-[0_4px_12px_${card.shadow}]`}>
+            <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${card.gradient} flex items-center justify-center text-white shadow-[0_4px_12px_${card.shadow}]`}>
               <card.icon size={20} />
             </div>
-            <h3 className="text-base font-bold text-purple-800 mb-1">{card.title}</h3>
+            <h3 className="text-base font-bold text-purple-800">{card.title}</h3>
             <p className="text-xs text-purple-500">{card.description}</p>
-            <div className="mt-3 flex items-center gap-1 text-xs font-semibold text-purple-400 group-hover:text-purple-600 transition-colors">
+            <div className="flex items-center gap-1 text-xs font-semibold text-purple-400 group-hover:text-purple-600 transition-colors">
               Open <FaArrowRight size={10} />
             </div>
           </Card>
@@ -86,12 +86,12 @@ const EmployeeDashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6">
-          <h3 className="text-base font-bold text-purple-800 mb-4 flex items-center gap-2">
+        <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+          <h3 className="text-base font-bold text-purple-800 flex items-center gap-2">
             <FaClock size={16} />
             Recent Activity
           </h3>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             {leaveReqs.length > 0 ? (
               leaveReqs.slice(-3).reverse().map((req) => (
                 <div key={req.id} className="flex items-center justify-between p-3 bg-purple-50/60 rounded-xl">
@@ -110,24 +110,24 @@ const EmployeeDashboard = () => {
           </div>
         </Card>
 
-        <Card className="p-6">
-          <h3 className="text-base font-bold text-purple-800 mb-4">Quick Stats</h3>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between p-3.5 bg-emerald-50/80 rounded-xl border border-emerald-100/50">
+        <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+          <h3 className="text-base font-bold text-purple-800">Quick Stats</h3>
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center justify-between p-4 bg-emerald-50/80 rounded-xl border border-emerald-100/50">
               <div>
                 <span className="text-sm font-medium text-emerald-800">Present Days</span>
                 <p className="text-xs text-emerald-500">Total records</p>
               </div>
               <span className="text-xl font-bold text-emerald-600">{presentCount}</span>
             </div>
-            <div className="flex items-center justify-between p-3.5 bg-red-50/80 rounded-xl border border-red-100/50">
+            <div className="flex items-center justify-between p-4 bg-red-50/80 rounded-xl border border-red-100/50">
               <div>
                 <span className="text-sm font-medium text-red-800">Absent Days</span>
                 <p className="text-xs text-red-500">Total records</p>
               </div>
               <span className="text-xl font-bold text-red-600">{absentCount}</span>
             </div>
-            <div className="flex items-center justify-between p-3.5 bg-amber-50/80 rounded-xl border border-amber-100/50">
+            <div className="flex items-center justify-between p-4 bg-amber-50/80 rounded-xl border border-amber-100/50">
               <div>
                 <span className="text-sm font-medium text-amber-800">Pending Leaves</span>
                 <p className="text-xs text-amber-500">Awaiting approval</p>

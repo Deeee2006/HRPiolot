@@ -32,7 +32,7 @@ const Header = ({ title }) => {
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-3 bg-white/50 backdrop-blur-sm rounded-xl px-4 py-2 border border-purple-100/50">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm shadow-[0_4px_12px_rgba(147,51,234,0.25)]">
+            <div className="w-9 h-9 rounded-xl bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm shadow-[0_4px_12px_rgba(147,51,234,0.25)]">
               {user?.name?.charAt(0) || 'U'}
             </div>
             <div className="hidden sm:block">

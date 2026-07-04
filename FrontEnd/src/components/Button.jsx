@@ -2,10 +2,10 @@ const Button = ({ children, variant = 'primary', size = 'md', className = '', di
   const baseStyles = 'relative inline-flex items-center justify-center gap-2 font-medium rounded-xl transition-all duration-300 cursor-pointer overflow-hidden';
 
   const variants = {
-    primary: 'bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-[0_4px_14px_rgba(147,51,234,0.3)] hover:shadow-[0_8px_24px_rgba(147,51,234,0.4)] hover:-translate-y-0.5 active:translate-y-0 before:absolute before:inset-0 before:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)] before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700',
-    secondary: 'bg-gradient-to-r from-pink-400 to-pink-600 text-white shadow-[0_4px_14px_rgba(236,72,153,0.3)] hover:shadow-[0_8px_24px_rgba(236,72,153,0.4)] hover:-translate-y-0.5 active:translate-y-0',
-    success: 'bg-gradient-to-r from-emerald-400 to-emerald-600 text-white shadow-[0_4px_14px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.4)] hover:-translate-y-0.5 active:translate-y-0',
-    danger: 'bg-gradient-to-r from-red-400 to-red-600 text-white shadow-[0_4px_14px_rgba(239,68,68,0.3)] hover:shadow-[0_8px_24px_rgba(239,68,68,0.4)] hover:-translate-y-0.5 active:translate-y-0',
+    primary: 'bg-linear-to-r from-purple-500 to-purple-700 text-white shadow-[0_4px_14px_rgba(147,51,234,0.3)] hover:shadow-[0_8px_24px_rgba(147,51,234,0.4)] hover:-translate-y-0.5 active:translate-y-0 before:absolute before:inset-0 before:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)] before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700',
+    secondary: 'bg-linear-to-r from-pink-400 to-pink-600 text-white shadow-[0_4px_14px_rgba(236,72,153,0.3)] hover:shadow-[0_8px_24px_rgba(236,72,153,0.4)] hover:-translate-y-0.5 active:translate-y-0',
+    success: 'bg-linear-to-r from-emerald-400 to-emerald-600 text-white shadow-[0_4px_14px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.4)] hover:-translate-y-0.5 active:translate-y-0',
+    danger: 'bg-linear-to-r from-red-400 to-red-600 text-white shadow-[0_4px_14px_rgba(239,68,68,0.3)] hover:shadow-[0_8px_24px_rgba(239,68,68,0.4)] hover:-translate-y-0.5 active:translate-y-0',
     outline: 'bg-white/70 backdrop-blur-sm border-2 border-purple-300 text-purple-700 shadow-[0_2px_8px_rgba(147,51,234,0.1)] hover:shadow-[0_6px_16px_rgba(147,51,234,0.2)] hover:-translate-y-0.5 active:translate-y-0 hover:bg-white/90',
     ghost: 'bg-transparent text-purple-700 hover:bg-purple-100/60 shadow-none',
   };

@@ -33,13 +33,15 @@ const AdminPayroll = () => {
   const avgSalary = Math.round(totalPayroll / employees.length);
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-purple-800">Payroll Management</h2>
+    <div className="p-6 flex flex-col gap-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-purple-800">Payroll Management</h2>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card className="p-5">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(147,51,234,0.25)]">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(147,51,234,0.25)]">
               <FaDollarSign size={22} />
             </div>
             <div>
@@ -48,9 +50,9 @@ const AdminPayroll = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-5">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(16,185,129,0.25)]">
               <FaChartLine size={22} />
             </div>
             <div>
@@ -59,9 +61,9 @@ const AdminPayroll = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-5">
+        <Card className="p-4 rounded-2xl flex flex-col justify-between h-full">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(59,130,246,0.25)]">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(59,130,246,0.25)]">
               <FaUsers size={22} />
             </div>
             <div>
@@ -72,8 +74,8 @@ const AdminPayroll = () => {
         </Card>
       </div>
 
-      <Card className="p-6">
-        <h3 className="text-base font-bold text-purple-800 mb-4">Salary Overview</h3>
+      <div className="bg-white rounded-2xl p-4 flex flex-col gap-4">
+        <h3 className="text-base font-bold text-purple-800">Salary Overview</h3>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -89,9 +91,9 @@ const AdminPayroll = () => {
             <tbody>
               {employees.map((employee) => (
                 <tr key={employee.id} className="border-b border-purple-50/60 hover:bg-purple-50/40 transition-colors">
-                  <td className="py-4 px-4">
+                  <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm shadow-[0_4px_8px_rgba(147,51,234,0.2)]">
+                      <div className="w-9 h-9 rounded-xl bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm shadow-[0_4px_8px_rgba(147,51,234,0.2)]">
                         {employee.name.charAt(0)}
                       </div>
                       <div>
@@ -100,19 +102,19 @@ const AdminPayroll = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 px-4 text-sm text-purple-500">{employee.department}</td>
-                  <td className="py-4 px-4 text-sm text-purple-500">{employee.position}</td>
-                  <td className="py-4 px-4">
+                  <td className="py-3 px-4 text-sm text-purple-500">{employee.department}</td>
+                  <td className="py-3 px-4 text-sm text-purple-500">{employee.position}</td>
+                  <td className="py-3 px-4">
                     {editingId === employee.id ? (
                       <Input value={editValue} onChange={(e) => setEditValue(e.target.value)} type="number" className="w-28" />
                     ) : (
                       <span className="text-sm font-semibold text-purple-800">${employee.salary.toLocaleString()}</span>
                     )}
                   </td>
-                  <td className="py-4 px-4 text-sm text-purple-500">
+                  <td className="py-3 px-4 text-sm text-purple-500">
                     ${(employee.salary / 12).toLocaleString(undefined, { maximumFractionDigits: 0 })}
                   </td>
-                  <td className="py-4 px-4">
+                  <td className="py-3 px-4">
                     {editingId === employee.id ? (
                       <div className="flex gap-1.5">
                         <Button onClick={() => handleSave(employee.id)} variant="success" size="sm"><FaSave size={13} /></Button>
@@ -129,11 +131,11 @@ const AdminPayroll = () => {
             </tbody>
           </table>
         </div>
-      </Card>
+      </div>
 
-      <Card className="p-6">
-        <h3 className="text-base font-bold text-purple-800 mb-4">Department Salary Breakdown</h3>
-        <div className="space-y-3">
+      <Card className="p-4 rounded-2xl flex flex-col gap-4 h-full">
+        <h3 className="text-base font-bold text-purple-800">Department Salary Breakdown</h3>
+        <div className="flex flex-col gap-3">
           {['Engineering', 'Marketing', 'Finance', 'Human Resources'].map((dept) => {
             const deptEmployees = employees.filter(e => e.department === dept);
             const deptTotal = deptEmployees.reduce((sum, e) => sum + e.salary, 0);
