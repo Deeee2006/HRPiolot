@@ -74,7 +74,7 @@ const AdminLeave = () => {
         <Card className="p-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-yellow-100 flex items-center justify-center">
-              <CheckSquare className="text-yellow-600" size={20} />
+              <FaCheckSquare className="text-yellow-600" size={20} />
             </div>
             <div>
               <p className="text-2xl font-bold text-yellow-600">{stats.pending}</p>
@@ -96,7 +96,7 @@ const AdminLeave = () => {
         <Card className="p-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center">
-              <X className="text-red-600" size={20} />
+              <FaTimes className="text-red-600" size={20} />
             </div>
             <div>
               <p className="text-2xl font-bold text-red-600">{stats.rejected}</p>
@@ -107,7 +107,7 @@ const AdminLeave = () => {
         <Card className="p-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center">
-              <Calendar className="text-purple-600" size={20} />
+              <FaCalendar className="text-purple-600" size={20} />
             </div>
             <div>
               <p className="text-2xl font-bold text-purple-600">{stats.total}</p>
@@ -160,7 +160,7 @@ const AdminLeave = () => {
                       size="sm"
                       className="flex items-center gap-2"
                     >
-                      <Check size={16} />
+                      <FaCheck size={16} />
                       Approve
                     </Button>
                     <Button
@@ -169,7 +169,7 @@ const AdminLeave = () => {
                       size="sm"
                       className="flex items-center gap-2"
                     >
-                      <X size={16} />
+                      <FaTimes size={16} />
                       Reject
                     </Button>
                   </div>

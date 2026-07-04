@@ -53,7 +53,7 @@ const Payroll = () => {
         <Card className="p-6">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(34,197,94,0.3)]">
-              <FaTrendingUp size={24} />
+              <FaChartLine size={24} />
             </div>
             <div>
               <p className="text-sm text-green-600 font-medium">Annual Salary</p>

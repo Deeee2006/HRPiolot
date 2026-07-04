@@ -2,7 +2,7 @@ import React from 'react';
 import { useEmployee } from '../../context/EmployeeContext';
 import Card from '../../components/Card';
 import Badge from '../../components/Badge';
-import { FaUsers, FaCalendar, FaCheckSquare, FaDollarSign, FaChartLine, FaExclamationCircle } from 'react-icons/fa';
+import { FaUsers, FaCalendar, FaCheckSquare, FaDollarSign, FaChartLine, FaExclamationCircle, FaChartBar } from 'react-icons/fa';
 
 const AdminDashboard = () => {
   const { employees } = useEmployee();
@@ -18,7 +18,7 @@ const AdminDashboard = () => {
     {
       title: 'Present Today',
       value: '18',
-      icon: Calendar,
+      icon: FaCalendar,
       color: 'from-green-400 to-green-600',
       bgColor: 'green'
     },
@@ -32,7 +32,7 @@ const AdminDashboard = () => {
     {
       title: 'Total Payroll',
       value: '$425K',
-      icon: DollarSign,
+      icon: FaDollarSign,
       color: 'from-blue-400 to-blue-600',
       bgColor: 'blue'
     }
@@ -94,7 +94,7 @@ const AdminDashboard = () => {
 
         <Card className="p-6">
           <h3 className="text-lg font-bold text-purple-800 mb-4 flex items-center gap-2">
-            <Users size={20} />
+            <FaChartBar size={20} />
             Department Distribution
           </h3>
           <div className="space-y-4">

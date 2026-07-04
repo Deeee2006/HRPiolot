@@ -26,7 +26,15 @@ import AdminLeave from '../pages/admin/Leave';
 import AdminPayroll from '../pages/admin/Payroll';
 
 const AppRoutes = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 flex items-center justify-center">
+        <div className="text-purple-600 text-lg font-medium">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <Routes>

@@ -84,13 +84,13 @@ const Employees = () => {
                   </td>
                   <td className="py-4 px-4">
                     <div className="flex items-center gap-2 text-sm text-purple-600">
-                      <MapPin size={16} />
+                      <FaMapMarkerAlt size={16} />
                       {employee.department}
                     </div>
                   </td>
                   <td className="py-4 px-4">
                     <div className="flex items-center gap-2 text-sm text-purple-600">
-                      <Briefcase size={16} />
+                      <FaBriefcase size={16} />
                       {employee.position}
                     </div>
                   </td>

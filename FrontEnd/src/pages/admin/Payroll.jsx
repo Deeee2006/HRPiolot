@@ -40,7 +40,7 @@ const AdminPayroll = () => {
         <Card className="p-6">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(147,51,234,0.3)]">
-              <DollarSign size={24} />
+              <FaDollarSign size={24} />
             </div>
             <div>
               <p className="text-sm text-purple-600 font-medium">Total Payroll</p>
@@ -52,7 +52,7 @@ const AdminPayroll = () => {
         <Card className="p-6">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(34,197,94,0.3)]">
-              <FaTrendingUp size={24} />
+              <FaChartLine size={24} />
             </div>
             <div>
               <p className="text-sm text-green-600 font-medium">Average Salary</p>
@@ -64,7 +64,7 @@ const AdminPayroll = () => {
         <Card className="p-6">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white shadow-[0_4px_12px_rgba(59,130,246,0.3)]">
-              <Users size={24} />
+              <FaUsers size={24} />
             </div>
             <div>
               <p className="text-sm text-blue-600 font-medium">Total Employees</p>
@@ -130,7 +130,7 @@ const AdminPayroll = () => {
                           size="sm"
                           className="flex items-center gap-1"
                         >
-                          <Save size={14} />
+                          <FaSave size={14} />
                         </Button>
                         <Button
                           onClick={handleCancel}
@@ -138,7 +138,7 @@ const AdminPayroll = () => {
                           size="sm"
                           className="flex items-center gap-1"
                         >
-                          <X size={14} />
+                          <FaTimes size={14} />
                         </Button>
                       </div>
                     ) : (

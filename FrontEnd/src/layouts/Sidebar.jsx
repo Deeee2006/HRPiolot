@@ -17,19 +17,19 @@ const Sidebar = () => {
   const location = useLocation();
 
   const employeeNavItems = [
-    { path: '/employee/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-    { path: '/employee/profile', icon: User, label: 'Profile' },
-    { path: '/employee/attendance', icon: Calendar, label: 'Attendance' },
-    { path: '/employee/leave', icon: FileText, label: 'Leave Requests' },
-    { path: '/employee/payroll', icon: DollarSign, label: 'Payroll' },
+    { path: '/employee/dashboard', icon: FaTachometerAlt, label: 'Dashboard' },
+    { path: '/employee/profile', icon: FaUser, label: 'Profile' },
+    { path: '/employee/attendance', icon: FaCalendar, label: 'Attendance' },
+    { path: '/employee/leave', icon: FaFileAlt, label: 'Leave Requests' },
+    { path: '/employee/payroll', icon: FaDollarSign, label: 'Payroll' },
   ];
 
   const adminNavItems = [
-    { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-    { path: '/admin/employees', icon: Users, label: 'Employees' },
-    { path: '/admin/attendance', icon: Calendar, label: 'Attendance' },
-    { path: '/admin/leave', icon: CheckSquare, label: 'Leave Approvals' },
-    { path: '/admin/payroll', icon: DollarSign, label: 'Payroll' },
+    { path: '/admin/dashboard', icon: FaTachometerAlt, label: 'Dashboard' },
+    { path: '/admin/employees', icon: FaUsers, label: 'Employees' },
+    { path: '/admin/attendance', icon: FaCalendar, label: 'Attendance' },
+    { path: '/admin/leave', icon: FaCheckSquare, label: 'Leave Approvals' },
+    { path: '/admin/payroll', icon: FaDollarSign, label: 'Payroll' },
   ];
 
   const navItems = isAdmin ? adminNavItems : employeeNavItems;
