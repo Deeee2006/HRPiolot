@@ -36,9 +36,9 @@ const AdminDashboard = () => {
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, i) => (
-          <Card key={i} className="p-4">
+          <Card key={i}>
             <div className="flex items-center gap-3">
-              <div className={`w-10 h-10 rounded-md ${stat.color} flex items-center justify-center text-white shrink-0`}>
+              <div className={`w-10 h-10 rounded-lg ${stat.color} flex items-center justify-center text-white shrink-0`}>
                 <stat.icon size={17} />
               </div>
               <div>
@@ -52,14 +52,14 @@ const AdminDashboard = () => {
 
       {/* Activity + Department */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6">
+        <Card>
           <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <FaChartLine size={15} className="text-gray-400" />
             Recent Leave Activity
           </h3>
           <div className="flex flex-col gap-2">
             {recentActivities.length > 0 ? recentActivities.map((act, i) => (
-              <div key={act.id || i} className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
+              <div key={act.id || i} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div>
                   <p className="text-sm text-gray-700"><span className="font-medium">{act.name}</span> — {act.type}</p>
                   <p className="text-xs text-gray-500">{act.dept}</p>
@@ -72,7 +72,7 @@ const AdminDashboard = () => {
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card>
           <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <FaChartBar size={15} className="text-gray-400" />
             Department Distribution
@@ -97,7 +97,7 @@ const AdminDashboard = () => {
       </div>
 
       {/* Pending Actions */}
-      <Card className="p-6">
+      <Card>
         <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
           <FaExclamationCircle size={15} className="text-amber-500" />
           Pending Actions
@@ -122,7 +122,7 @@ const AdminDashboard = () => {
       </Card>
 
       {/* Employee Overview Table */}
-      <Card className="p-6">
+      <Card>
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-base font-semibold text-gray-900">Employee Overview</h3>
           <button onClick={() => navigate('/admin/employees')} className="text-xs font-medium text-blue-600 hover:text-blue-700 transition-colors flex items-center gap-1">
@@ -144,7 +144,7 @@ const AdminDashboard = () => {
                 <tr key={employee.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white text-sm font-medium shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 text-sm font-medium shrink-0">
                         {employee.name.charAt(0)}
                       </div>
                       <div>

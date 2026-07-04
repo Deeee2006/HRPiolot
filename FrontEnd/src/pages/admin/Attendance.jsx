@@ -76,9 +76,9 @@ const AdminAttendance = () => {
 
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0">
               <FaCheckCircle className="text-emerald-600" size={17} />
             </div>
             <div>
@@ -87,9 +87,9 @@ const AdminAttendance = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-red-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center shrink-0">
               <FaTimesCircle className="text-red-600" size={17} />
             </div>
             <div>
@@ -98,9 +98,9 @@ const AdminAttendance = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-amber-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
               <FaExclamationCircle className="text-amber-600" size={17} />
             </div>
             <div>
@@ -109,9 +109,9 @@ const AdminAttendance = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-blue-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
               <FaCalendar className="text-blue-600" size={17} />
             </div>
             <div>
@@ -123,25 +123,25 @@ const AdminAttendance = () => {
       </div>
 
       {/* Employee Attendance Table */}
-      <Card className="p-6">
+      <Card>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <h3 className="text-base font-semibold text-gray-900">Employee Attendance</h3>
           <div className="flex items-center gap-3">
             <div className="relative">
-              <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={13} />
+              <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={13} />
               <input
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="h-9 pl-9 pr-3 w-48 rounded-md bg-white border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all"
+                className="h-9 pl-9 pr-3 w-48 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all"
               />
             </div>
-            <div className="flex items-center gap-2">
-              <FaFilter className="text-gray-400" size={13} />
+            <div className="relative">
+              <FaFilter className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={13} />
               <select
                 value={selectedFilter}
                 onChange={(e) => setSelectedFilter(e.target.value)}
-                className="h-9 px-3 rounded-md bg-white border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all appearance-none minimal-select pr-8"
+                className="h-9 pl-9 pr-8 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all appearance-none minimal-select"
               >
                 {filters.map(f => <option key={f} value={f}>{f}</option>)}
               </select>
@@ -165,7 +165,7 @@ const AdminAttendance = () => {
                 <tr key={employee.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-medium text-sm shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 font-medium text-sm shrink-0">
                         {employee.name.charAt(0)}
                       </div>
                       <div>

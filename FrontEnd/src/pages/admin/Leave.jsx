@@ -69,9 +69,9 @@ const AdminLeave = () => {
 
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-amber-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
               <FaClock className="text-amber-600" size={17} />
             </div>
             <div>
@@ -80,9 +80,9 @@ const AdminLeave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0">
               <FaCheck className="text-emerald-600" size={17} />
             </div>
             <div>
@@ -91,9 +91,9 @@ const AdminLeave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-red-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center shrink-0">
               <FaTimes className="text-red-600" size={17} />
             </div>
             <div>
@@ -102,9 +102,9 @@ const AdminLeave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-blue-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
               <FaCalendar className="text-blue-600" size={17} />
             </div>
             <div>
@@ -116,7 +116,7 @@ const AdminLeave = () => {
       </div>
 
       {/* Pending Requests */}
-      <Card className="p-6">
+      <Card>
         <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
           Pending Requests
           {pendingRequests.length > 0 && (
@@ -130,7 +130,7 @@ const AdminLeave = () => {
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-medium text-sm shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 font-medium text-sm shrink-0">
                         {request.employeeName.charAt(0)}
                       </div>
                       <div>
@@ -176,7 +176,7 @@ const AdminLeave = () => {
       </Card>
 
       {/* All Leave History */}
-      <Card className="p-6">
+      <Card>
         <h3 className="text-base font-semibold text-gray-900 mb-4">All Leave History</h3>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -195,7 +195,7 @@ const AdminLeave = () => {
                 <tr key={request.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white text-sm font-medium shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 text-sm font-medium shrink-0">
                         {request.employeeName.charAt(0)}
                       </div>
                       <div>

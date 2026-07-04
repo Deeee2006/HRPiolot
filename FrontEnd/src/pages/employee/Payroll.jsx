@@ -50,9 +50,9 @@ const Payroll = () => {
 
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-md bg-blue-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
               <FaWallet className="text-blue-600" size={17} />
             </div>
             <div>
@@ -61,9 +61,9 @@ const Payroll = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0">
               <FaChartLine className="text-emerald-600" size={17} />
             </div>
             <div>
@@ -72,9 +72,9 @@ const Payroll = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-md bg-purple-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center shrink-0">
               <FaCalendar className="text-purple-600" size={17} />
             </div>
             <div>
@@ -87,38 +87,38 @@ const Payroll = () => {
 
       {/* Breakdown + Deductions */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6">
+        <Card>
           <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <FaArrowUp size={13} className="text-emerald-500" />
             Salary Breakdown
           </h3>
           <div className="flex flex-col gap-2">
             {salaryBreakdown.map((item, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
+              <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <span className="text-sm text-gray-700">{item.label}</span>
                 <span className="text-sm font-semibold text-gray-900">${item.amount.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
               </div>
             ))}
-            <div className="flex items-center justify-between p-3 bg-gray-100 rounded-md border border-gray-200 mt-1">
+            <div className="flex items-center justify-between p-3 bg-gray-100 rounded-lg border border-gray-200 mt-1">
               <span className="text-sm font-semibold text-gray-900">Total Earnings</span>
               <span className="text-sm font-semibold text-gray-900">${totalEarnings.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
             </div>
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card>
           <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <FaArrowDown size={13} className="text-red-500" />
             Deductions
           </h3>
           <div className="flex flex-col gap-2">
             {deductions.map((item, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-red-50 rounded-md">
+              <div key={index} className="flex items-center justify-between p-3 bg-red-50 rounded-lg">
                 <span className="text-sm text-red-700">{item.label}</span>
                 <span className="text-sm font-semibold text-red-700">-${item.amount.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
               </div>
             ))}
-            <div className="flex items-center justify-between p-3 bg-red-100 rounded-md border border-red-200 mt-1">
+            <div className="flex items-center justify-between p-3 bg-red-100 rounded-lg border border-red-200 mt-1">
               <span className="text-sm font-semibold text-red-800">Total Deductions</span>
               <span className="text-sm font-semibold text-red-800">-${totalDeductions.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
             </div>
@@ -127,7 +127,7 @@ const Payroll = () => {
       </div>
 
       {/* Net Salary Banner */}
-      <Card className="p-6">
+      <Card>
         <div className="p-6 bg-blue-600 rounded-lg text-white">
           <p className="text-sm font-medium opacity-80 mb-1">Net Monthly Salary</p>
           <p className="text-4xl font-bold tracking-tight">${netSalary.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
@@ -135,7 +135,7 @@ const Payroll = () => {
       </Card>
 
       {/* Payment History */}
-      <Card className="p-6">
+      <Card>
         <h3 className="text-base font-semibold text-gray-900 mb-4">Payment History</h3>
         <div className="overflow-x-auto">
           <table className="w-full">

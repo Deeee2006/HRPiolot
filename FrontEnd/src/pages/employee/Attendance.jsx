@@ -72,10 +72,10 @@ const Attendance = () => {
       </div>
 
       {/* Check In/Out Card */}
-      <Card className="p-6">
+      <Card>
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-md bg-blue-600 flex items-center justify-center text-white shrink-0">
+            <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700 shrink-0">
               <FaClock size={22} />
             </div>
             <div>
@@ -111,7 +111,7 @@ const Attendance = () => {
       </Card>
 
       {/* Attendance History Table */}
-      <Card className="p-6">
+      <Card>
         <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
           <FaHistory size={15} className="text-gray-400" />
           Attendance History
@@ -156,7 +156,7 @@ const Attendance = () => {
 
       {/* Weekly Summary */}
       {attendanceRecords.length > 0 && (
-        <Card className="p-6">
+        <Card>
           <h3 className="text-base font-semibold text-gray-900 mb-4">Summary</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200 text-center">

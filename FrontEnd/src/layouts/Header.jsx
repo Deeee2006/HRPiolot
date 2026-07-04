@@ -32,8 +32,8 @@ const Header = ({ title }) => {
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-3 bg-gray-50 rounded-lg px-3 py-2 border border-gray-200">
-            <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-sm shrink-0">
+          <div className="flex items-center gap-3 px-3 py-1.5">
+            <div className="w-8 h-8 rounded-md bg-gray-100 flex items-center justify-center text-gray-700 font-bold text-sm shrink-0">
               {user?.name?.charAt(0) || 'U'}
             </div>
             <div className="hidden sm:flex flex-col">

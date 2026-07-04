@@ -63,14 +63,14 @@ const Sidebar = () => {
         transition-transform duration-300 ease-in-out
         ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
-        <div className="flex items-center justify-between px-4 py-5 border-b border-gray-100">
+        <div className="flex items-center justify-between px-5 py-5 border-b border-gray-200">
           <div>
             <h1 className="text-lg font-bold text-gray-900 tracking-tight">HRPilot</h1>
             <p className="text-xs text-gray-500 mt-0.5 font-medium">HR Management System</p>
           </div>
           <button
             onClick={() => setIsMobileOpen(false)}
-            className="lg:hidden w-8 h-8 rounded-md bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors"
+            className="lg:hidden w-8 h-8 rounded-md flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-all"
           >
             <FaTimes size={14} />
           </button>
@@ -84,25 +84,22 @@ const Sidebar = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsMobileOpen(false)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-md transition-all duration-200 group ${
+                className={`flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200 group ${
                   active
-                    ? 'bg-blue-50 text-blue-700'
+                    ? 'bg-gray-100 text-gray-900 font-medium'
                     : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                 }`}
               >
-                <item.icon size={16} className={`shrink-0 ${active ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'}`} />
+                <item.icon size={16} className={`shrink-0 ${active ? 'text-gray-900' : 'text-gray-400 group-hover:text-gray-600'}`} />
                 <span className="text-sm font-medium">{item.label}</span>
-                {active && (
-                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-                )}
               </NavLink>
             );
           })}
         </nav>
 
-        <div className="px-3 py-4 border-t border-gray-100 flex flex-col gap-2">
-          <div className="flex items-center gap-3 px-3 py-3 bg-gray-50 rounded-md border border-gray-200">
-            <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white text-sm font-bold shrink-0">
+        <div className="px-3 py-4 border-t border-gray-200 flex flex-col gap-2">
+          <div className="flex items-center gap-3 px-3 py-2.5 rounded-md">
+            <div className="w-8 h-8 rounded-md bg-gray-100 flex items-center justify-center text-gray-700 text-sm font-bold shrink-0">
               {user?.name?.charAt(0) || 'U'}
             </div>
             <div className="flex flex-col min-w-0">
@@ -115,7 +112,7 @@ const Sidebar = () => {
           </div>
           <button
             onClick={logout}
-            className="flex items-center gap-3 px-3 py-2.5 w-full rounded-md text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 group"
+            className="flex items-center gap-3 px-3 py-2 w-full rounded-md text-gray-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200"
           >
             <FaSignOutAlt size={15} className="shrink-0" />
             <span className="text-sm font-medium">Logout</span>

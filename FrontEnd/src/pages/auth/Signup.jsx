@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import { LuMail, LuLock, LuEye, LuEyeOff, LuIdCard, LuBuilding, LuUsers, LuCalendarCheck, LuShield, LuUserPlus, LuChevronDown } from 'react-icons/lu';
+import { LuMail, LuLock, LuEye, LuEyeOff, LuIdCard, LuBuilding, LuUsers, LuCalendarCheck, LuShield, LuUserPlus } from 'react-icons/lu';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -75,7 +75,7 @@ const Signup = () => {
             Join the platform that makes HR management effortless and efficient.
           </p>
           <div className="space-y-4">
-            {features.map((feature, i) => (
+            {features.map((feature) => (
               <div
                 key={feature.text}
                 className="flex items-center gap-3 text-gray-700"
@@ -105,112 +105,100 @@ const Signup = () => {
             <h1 className="text-2xl font-bold text-gray-900">HRPilot</h1>
           </div>
 
-          <div className="auth-card p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
             <div className="mb-6">
               <h2 className="text-xl font-semibold text-gray-900">Create account</h2>
-              <p className="text-gray-600 text-sm mt-1">Fill in your details to get started</p>
+              <p className="text-gray-500 text-sm mt-1">Fill in your details to get started</p>
             </div>
 
             {errors.form && (
-              <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm font-medium flex items-center gap-2.5 animate-shake">
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm font-medium flex items-center gap-2.5 animate-shake">
                 <span>{errors.form}</span>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-              <div>
-                <Input
-                  label="Employee ID"
-                  name="employeeId"
-                  type="text"
-                  value={formData.employeeId}
-                  onChange={handleChange}
-                  error={errors.employeeId}
-                  icon={<LuIdCard size={16} />}
-                  floating
-                />
-              </div>
-              <div>
-                <Input
-                  label="Email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  error={errors.email}
-                  icon={<LuMail size={16} />}
-                  floating
-                  autoComplete="email"
-                />
-              </div>
-              <div>
-                <Input
-                  label="Password"
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  value={formData.password}
-                  onChange={handleChange}
-                  error={errors.password}
-                  icon={<LuLock size={16} />}
-                  floating
-                  autoComplete="new-password"
-                  rightElement={
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="text-gray-400 hover:text-gray-600 transition-colors p-1"
-                      tabIndex={-1}
-                      aria-label={showPassword ? 'Hide password' : 'Show password'}
-                    >
-                      {showPassword ? <LuEyeOff size={17} /> : <LuEye size={17} />}
-                    </button>
-                  }
-                />
-              </div>
-              <div>
-                <Input
-                  label="Confirm Password"
-                  name="confirmPassword"
-                  type={showPassword ? 'text' : 'password'}
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  error={errors.confirmPassword}
-                  icon={<LuLock size={16} />}
-                  floating
-                  autoComplete="new-password"
-                />
-              </div>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
+              <Input
+                label="Employee ID"
+                name="employeeId"
+                type="text"
+                value={formData.employeeId}
+                onChange={handleChange}
+                error={errors.employeeId}
+                icon={<LuIdCard size={16} />}
+                floating
+              />
+              <Input
+                label="Email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                error={errors.email}
+                icon={<LuMail size={16} />}
+                floating
+                autoComplete="email"
+              />
+              <Input
+                label="Password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                value={formData.password}
+                onChange={handleChange}
+                error={errors.password}
+                icon={<LuLock size={16} />}
+                floating
+                autoComplete="new-password"
+                rightElement={
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors p-1"
+                    tabIndex={-1}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  >
+                    {showPassword ? <LuEyeOff size={17} /> : <LuEye size={17} />}
+                  </button>
+                }
+              />
+              <Input
+                label="Confirm Password"
+                name="confirmPassword"
+                type={showPassword ? 'text' : 'password'}
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                error={errors.confirmPassword}
+                icon={<LuLock size={16} />}
+                floating
+                autoComplete="new-password"
+              />
 
-              <div>
-                <div className="flex flex-col gap-1">
-                  <label className="text-sm font-semibold text-gray-700">Role</label>
-                  <div className="relative">
-                    <LuShield size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-                    <select
-                      name="role"
-                      value={formData.role}
-                      onChange={handleChange}
-                      className="w-full pl-10 pr-10 py-2.5 rounded-md bg-white border border-gray-300 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all duration-200 appearance-none cursor-pointer minimal-select"
-                    >
-                      <option value="employee">Employee</option>
-                      <option value="admin">Admin</option>
-                    </select>
-                  </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-gray-700">Role</label>
+                <div className="relative">
+                  <LuShield size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                  <select
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    className="w-full h-10 pl-10 pr-10 rounded-md bg-white border border-gray-300 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all duration-200 appearance-none cursor-pointer minimal-select"
+                  >
+                    <option value="employee">Employee</option>
+                    <option value="admin">Admin</option>
+                  </select>
                 </div>
               </div>
 
-              <div className="pt-1">
-                <Button
-                  type="submit"
-                  className="w-full"
-                  size="lg"
-                  loading={isLoading}
-                  disabled={isLoading}
-                >
-                  {isLoading ? 'Creating Account...' : 'Create Account'}
-                  {!isLoading && <LuUserPlus size={18} />}
-                </Button>
-              </div>
+              <Button
+                type="submit"
+                className="w-full"
+                size="md"
+                loading={isLoading}
+                disabled={isLoading}
+              >
+                {isLoading ? 'Creating Account...' : 'Create Account'}
+                {!isLoading && <LuUserPlus size={18} />}
+              </Button>
             </form>
 
             <div className="mt-6">
@@ -229,9 +217,9 @@ const Signup = () => {
               </div>
             </div>
 
-            <p className="text-center mt-6 text-gray-600 text-sm">
+            <p className="text-center mt-6 text-gray-500 text-sm">
               Already have an account?{' '}
-              <Link to="/login" className="font-semibold text-gray-700 hover:text-gray-900 transition-colors">
+              <Link to="/login" className="font-semibold text-gray-900 hover:text-gray-700 transition-colors">
                 Sign In
               </Link>
             </p>

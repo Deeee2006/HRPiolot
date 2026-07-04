@@ -13,7 +13,7 @@ const Badge = ({ children, variant = 'default', className = '', size = 'sm' }) =
   };
 
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full font-semibold border ${variants[variant]} ${sizes[size]} ${className}`}>
+    <span className={`inline-flex items-center gap-1.5 rounded-full font-medium border ${variants[variant]} ${sizes[size]} ${className}`}>
       {children}
     </span>
   );

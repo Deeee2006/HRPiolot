@@ -63,9 +63,9 @@ const Leave = () => {
 
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-blue-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
               <FaCalendar className="text-blue-600" size={17} />
             </div>
             <div>
@@ -74,9 +74,9 @@ const Leave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0">
               <FaFileAlt className="text-emerald-600" size={17} />
             </div>
             <div>
@@ -85,9 +85,9 @@ const Leave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-amber-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
               <FaClock className="text-amber-600" size={17} />
             </div>
             <div>
@@ -96,9 +96,9 @@ const Leave = () => {
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-red-100 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center shrink-0">
               <FaFileAlt className="text-red-600" size={17} />
             </div>
             <div>
@@ -110,7 +110,7 @@ const Leave = () => {
       </div>
 
       {/* Leave History */}
-      <Card className="p-6">
+      <Card>
         <h3 className="text-base font-semibold text-gray-900 mb-4">Leave History</h3>
         {leaveRequests.length === 0 ? (
           <div className="text-center py-12 bg-gray-50 rounded-lg">
@@ -118,9 +118,9 @@ const Leave = () => {
             <p className="text-gray-500 text-sm">No leave requests yet</p>
           </div>
         ) : (
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
             {leaveRequests.map((request) => (
-              <div key={request.id} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <div key={request.id} className="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors">
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-1.5">

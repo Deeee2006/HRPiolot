@@ -47,9 +47,9 @@ const Profile = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Profile Card */}
-        <Card className="p-6 lg:col-span-1">
+        <Card className="lg:col-span-1">
           <div className="flex flex-col items-center text-center mb-6">
-            <div className="w-20 h-20 rounded-xl bg-blue-600 flex items-center justify-center text-white text-3xl font-bold mb-4">
+            <div className="w-20 h-20 rounded-xl bg-gray-100 flex items-center justify-center text-gray-700 text-3xl font-bold mb-4">
               {user?.name?.charAt(0) || 'U'}
             </div>
             <h3 className="text-lg font-semibold text-gray-900">{user?.name}</h3>
@@ -61,11 +61,11 @@ const Profile = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-md">
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
               <FaEnvelope size={13} className="text-gray-400 shrink-0" />
               <span className="text-sm text-gray-700 truncate">{user?.email}</span>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-md">
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
               <FaIdBadge size={13} className="text-gray-400 shrink-0" />
               <span className="text-sm text-gray-700">{user?.id}</span>
             </div>
@@ -75,17 +75,17 @@ const Profile = () => {
         {/* Details Column */}
         <div className="lg:col-span-2 flex flex-col gap-6">
           {/* Personal Details */}
-          <Card className="p-6">
+          <Card>
             <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
               <FaUser size={15} className="text-gray-400" />
               Personal Details
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-3 bg-gray-50 rounded-md">
+              <div className="p-3 bg-gray-50 rounded-lg">
                 <p className="text-xs text-gray-500 font-medium mb-0.5">Employee ID</p>
                 <p className="text-sm font-medium text-gray-900">{user?.id}</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded-md">
+              <div className="p-3 bg-gray-50 rounded-lg">
                 <p className="text-xs text-gray-500 font-medium mb-0.5">Join Date</p>
                 <p className="text-sm font-medium text-gray-900">{user?.joinDate}</p>
               </div>
@@ -96,11 +96,11 @@ const Profile = () => {
                 </>
               ) : (
                 <>
-                  <div className="p-3 bg-gray-50 rounded-md">
+                  <div className="p-3 bg-gray-50 rounded-lg">
                     <p className="text-xs text-gray-500 font-medium mb-0.5">Phone</p>
                     <p className="text-sm font-medium text-gray-900">{user?.phone || <span className="text-gray-400 italic">Not provided</span>}</p>
                   </div>
-                  <div className="p-3 bg-gray-50 rounded-md">
+                  <div className="p-3 bg-gray-50 rounded-lg">
                     <p className="text-xs text-gray-500 font-medium mb-0.5">Address</p>
                     <p className="text-sm font-medium text-gray-900">{user?.address || <span className="text-gray-400 italic">Not provided</span>}</p>
                   </div>
@@ -116,17 +116,17 @@ const Profile = () => {
           </Card>
 
           {/* Job Details */}
-          <Card className="p-6">
+          <Card>
             <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
               <FaBriefcase size={15} className="text-gray-400" />
               Job Details
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-3 bg-gray-50 rounded-md">
+              <div className="p-3 bg-gray-50 rounded-lg">
                 <p className="text-xs text-gray-500 font-medium mb-0.5">Department</p>
                 <p className="text-sm font-medium text-gray-900">{user?.department}</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded-md">
+              <div className="p-3 bg-gray-50 rounded-lg">
                 <p className="text-xs text-gray-500 font-medium mb-0.5">Position</p>
                 <p className="text-sm font-medium text-gray-900">{user?.position}</p>
               </div>
@@ -134,7 +134,7 @@ const Profile = () => {
           </Card>
 
           {/* Salary */}
-          <Card className="p-6">
+          <Card>
             <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
               <FaDollarSign size={15} className="text-gray-400" />
               Salary Information
@@ -146,7 +146,7 @@ const Profile = () => {
           </Card>
 
           {/* Documents */}
-          <Card className="p-6">
+          <Card>
             <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
               <FaFileAlt size={15} className="text-gray-400" />
               Documents
@@ -154,7 +154,7 @@ const Profile = () => {
             {user?.documents?.length > 0 ? (
               <div className="flex flex-col gap-2">
                 {user.documents.map((doc, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
+                  <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-3">
                       <FaFileAlt size={14} className="text-gray-400 shrink-0" />
                       <div>

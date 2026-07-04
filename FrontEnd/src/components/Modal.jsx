@@ -25,15 +25,15 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
         className="absolute inset-0 bg-black/30 backdrop-blur-sm animate-fadeIn"
         onClick={onClose}
       />
-      <div className={`relative bg-white rounded-xl shadow-xl border border-gray-200 w-full ${sizes[size]} max-h-[85vh] flex flex-col animate-scaleIn`}>
+      <div className={`relative bg-white rounded-xl shadow-lg border border-gray-200 w-full ${sizes[size]} max-h-[85vh] flex flex-col animate-scaleIn`}>
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
           <h3 className="text-base font-semibold text-gray-900">{title}</h3>
           <button
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-md bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-all"
+            className="w-8 h-8 flex items-center justify-center rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-all"
           >
-            <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-              <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
           </button>
         </div>
