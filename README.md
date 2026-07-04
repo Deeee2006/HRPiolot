@@ -47,21 +47,78 @@ A modern Human Resource Management System (HRMS) built using React, Tailwind CSS
 ## 📂 Project Structure
 
 ```
-src/
-├── assets/          # Images, static files
-├── components/       # Reusable UI (Button, Card, Modal, Input, Badge)
-├── context/          # AuthContext, EmployeeContext, ToastContext
-├── hooks/            # Custom hooks
-├── layouts/          # DashboardLayout, Header, Sidebar
-├── lib/              # supabase.js (client), api.js
-├── pages/
-│   ├── admin/        # Dashboard, Employees, Attendance, Leave, Payroll
-│   ├── auth/          # Login, Signup
-│   └── employee/      # Dashboard, Attendance, Leave, Payroll, Profile
-├── routes/            # index.jsx, ProtectedRoute.jsx
-├── services/          # mockData.js
-├── App.jsx
-└── main.jsx
+
+```
+FrontEnd/
+├── dist
+│   ├── assets
+│   │   ├── index-6rHmkMSw.css
+│   │   └── index-L7t5y5c9.js
+│   ├── favicon.svg
+│   ├── icons.svg
+│   └── index.html
+├── public
+│   ├── favicon.svg
+│   └── icons.svg
+├── src
+│   ├── assets
+│   │   ├── favicon-32x32.png
+│   │   ├── hero.png
+│   │   └── react.svg
+│   ├── components
+│   │   ├── Badge.jsx
+│   │   ├── Button.jsx
+│   │   ├── Card.jsx
+│   │   ├── Input.jsx
+│   │   └── Modal.jsx
+│   ├── context
+│   │   ├── AuthContext.jsx
+│   │   ├── EmployeeContext.jsx
+│   │   └── ToastContext.jsx
+│   ├── hooks
+│   ├── layouts
+│   │   ├── DashboardLayout.jsx
+│   │   ├── Header.jsx
+│   │   └── Sidebar.jsx
+│   ├── lib
+│   │   ├── api.js
+│   │   └── supabase.js
+│   ├── pages
+│   │   ├── admin
+│   │   │   ├── Attendance.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Employees.jsx
+│   │   │   ├── Leave.jsx
+│   │   │   └── Payroll.jsx
+│   │   ├── auth
+│   │   │   ├── Login.jsx
+│   │   │   └── Signup.jsx
+│   │   ├── employee
+│   │   │   ├── Attendance.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Leave.jsx
+│   │   │   ├── Payroll.jsx
+│   │   │   └── Profile.jsx
+│   │   ├── AdminDashboard.jsx
+│   │   ├── EmployeeDashboard.jsx
+│   │   ├── SignIn.jsx
+│   │   └── SignUp.jsx
+│   ├── routes
+│   │   ├── index.jsx
+│   │   └── ProtectedRoute.jsx
+│   ├── services
+│   │   └── mockData.js
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+└── vite.config.js
+```
+
 ```
 
 ---
