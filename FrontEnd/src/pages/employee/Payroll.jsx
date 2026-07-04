@@ -39,80 +39,86 @@ const Payroll = () => {
   };
 
   return (
-    <div className="p-6 flex flex-col gap-6">
+    <div className="flex flex-col gap-6">
+      {/* Page Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-gray-900">Payroll</h2>
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900">Payroll</h2>
+          <p className="text-sm text-gray-500 mt-0.5">Your salary details and payment history</p>
+        </div>
       </div>
 
+      {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
+        <Card className="p-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-md bg-blue-600 flex items-center justify-center text-white">
-              <FaWallet size={22} />
+            <div className="w-10 h-10 rounded-md bg-blue-100 flex items-center justify-center shrink-0">
+              <FaWallet className="text-blue-600" size={17} />
             </div>
             <div>
-              <p className="text-xs text-gray-600 font-medium">Net Salary</p>
+              <p className="text-xs text-gray-500 font-medium">Net Salary</p>
               <p className="text-xl font-semibold text-gray-900">${netSalary.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
             </div>
           </div>
         </Card>
-        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
+        <Card className="p-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-md bg-emerald-600 flex items-center justify-center text-white">
-              <FaChartLine size={22} />
+            <div className="w-10 h-10 rounded-md bg-emerald-100 flex items-center justify-center shrink-0">
+              <FaChartLine className="text-emerald-600" size={17} />
             </div>
             <div>
-              <p className="text-xs text-emerald-600 font-medium">Annual Salary</p>
+              <p className="text-xs text-gray-500 font-medium">Annual Salary</p>
               <p className="text-xl font-semibold text-gray-900">${user?.salary?.toLocaleString()}</p>
             </div>
           </div>
         </Card>
-        <Card className="p-4 rounded-lg flex flex-col justify-between h-full">
+        <Card className="p-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-md bg-blue-600 flex items-center justify-center text-white">
-              <FaCalendar size={22} />
+            <div className="w-10 h-10 rounded-md bg-purple-100 flex items-center justify-center shrink-0">
+              <FaCalendar className="text-purple-600" size={17} />
             </div>
             <div>
-              <p className="text-xs text-blue-600 font-medium">Next Pay Date</p>
+              <p className="text-xs text-gray-500 font-medium">Next Pay Date</p>
               <p className="text-xl font-semibold text-gray-900">Feb 28</p>
             </div>
           </div>
         </Card>
       </div>
 
+      {/* Breakdown + Deductions */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
-          <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2">
-            <FaArrowUp size={14} className="text-emerald-500" />
+        <Card className="p-6">
+          <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
+            <FaArrowUp size={13} className="text-emerald-500" />
             Salary Breakdown
           </h3>
           <div className="flex flex-col gap-2">
             {salaryBreakdown.map((item, index) => (
-              <div key={index} className={`flex items-center justify-between p-3 ${item.bg} rounded-md`}>
-                <span className="text-sm font-medium text-gray-700">{item.label}</span>
-                <span className={`text-sm font-semibold ${item.color}`}>${item.amount.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
+              <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
+                <span className="text-sm text-gray-700">{item.label}</span>
+                <span className="text-sm font-semibold text-gray-900">${item.amount.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
               </div>
             ))}
-            <div className="flex items-center justify-between p-3 bg-gray-100 rounded-md border border-gray-200">
+            <div className="flex items-center justify-between p-3 bg-gray-100 rounded-md border border-gray-200 mt-1">
               <span className="text-sm font-semibold text-gray-900">Total Earnings</span>
               <span className="text-sm font-semibold text-gray-900">${totalEarnings.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
             </div>
           </div>
         </Card>
 
-        <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
-          <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2">
-            <FaArrowDown size={14} className="text-red-500" />
+        <Card className="p-6">
+          <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
+            <FaArrowDown size={13} className="text-red-500" />
             Deductions
           </h3>
           <div className="flex flex-col gap-2">
             {deductions.map((item, index) => (
               <div key={index} className="flex items-center justify-between p-3 bg-red-50 rounded-md">
-                <span className="text-sm font-medium text-red-700">{item.label}</span>
+                <span className="text-sm text-red-700">{item.label}</span>
                 <span className="text-sm font-semibold text-red-700">-${item.amount.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
               </div>
             ))}
-            <div className="flex items-center justify-between p-3 bg-red-100 rounded-md border border-red-200">
+            <div className="flex items-center justify-between p-3 bg-red-100 rounded-md border border-red-200 mt-1">
               <span className="text-sm font-semibold text-red-800">Total Deductions</span>
               <span className="text-sm font-semibold text-red-800">-${totalDeductions.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
             </div>
@@ -120,15 +126,17 @@ const Payroll = () => {
         </Card>
       </div>
 
-      <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
+      {/* Net Salary Banner */}
+      <Card className="p-6">
         <div className="p-6 bg-blue-600 rounded-lg text-white">
-          <p className="text-sm font-medium opacity-90">Net Monthly Salary</p>
+          <p className="text-sm font-medium opacity-80 mb-1">Net Monthly Salary</p>
           <p className="text-4xl font-bold tracking-tight">${netSalary.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
         </div>
       </Card>
 
-      <div className="bg-white rounded-lg border border-gray-200 p-4 flex flex-col gap-4">
-        <h3 className="text-base font-semibold text-gray-900">Payment History</h3>
+      {/* Payment History */}
+      <Card className="p-6">
+        <h3 className="text-base font-semibold text-gray-900 mb-4">Payment History</h3>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -137,7 +145,7 @@ const Payroll = () => {
                 <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
                 <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
                 <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                <th className="text-right py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -148,16 +156,18 @@ const Payroll = () => {
                   <td className="py-3 px-4 text-sm text-gray-600">{payment.date}</td>
                   <td className="py-3 px-4"><Badge variant="success">Paid</Badge></td>
                   <td className="py-3 px-4">
-                    <Button variant="ghost" size="sm" icon={<FaDownload size={12} />} onClick={handleDownload}>
-                      Payslip
-                    </Button>
+                    <div className="flex justify-end">
+                      <Button variant="ghost" size="sm" icon={<FaDownload size={12} />} onClick={handleDownload}>
+                        Payslip
+                      </Button>
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

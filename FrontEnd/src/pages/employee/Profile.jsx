@@ -31,70 +31,77 @@ const Profile = () => {
   };
 
   return (
-    <div className="p-6 flex flex-col gap-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold text-gray-900">My Profile</h2>
+    <div className="flex flex-col gap-6">
+      {/* Page Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900">My Profile</h2>
+          <p className="text-sm text-gray-500 mt-0.5">Your personal and professional details</p>
+        </div>
         {!isEditing && (
-          <Button onClick={() => setIsEditing(true)} variant="outline" size="sm" icon={<FaEdit size={14} />}>
+          <Button onClick={() => setIsEditing(true)} variant="outline" size="sm" icon={<FaEdit size={13} />}>
             Edit Profile
           </Button>
         )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card className="p-4 rounded-lg flex flex-col gap-4 h-full lg:col-span-1">
-          <div className="flex flex-col items-center text-center">
-            <div className="w-24 h-24 rounded-lg bg-blue-600 flex items-center justify-center text-white text-3xl font-medium mb-4">
+        {/* Profile Card */}
+        <Card className="p-6 lg:col-span-1">
+          <div className="flex flex-col items-center text-center mb-6">
+            <div className="w-20 h-20 rounded-xl bg-blue-600 flex items-center justify-center text-white text-3xl font-bold mb-4">
               {user?.name?.charAt(0) || 'U'}
             </div>
-            <h3 className="text-xl font-semibold text-gray-900">{user?.name}</h3>
-            <p className="text-sm text-gray-500">{user?.position}</p>
+            <h3 className="text-lg font-semibold text-gray-900">{user?.name}</h3>
+            <p className="text-sm text-gray-500 mt-0.5">{user?.position}</p>
             <Badge variant="default" className="mt-2 capitalize">{user?.role}</Badge>
             {user?.department && (
               <p className="text-xs text-gray-500 mt-2">{user?.department}</p>
             )}
           </div>
 
-          <div className="flex flex-col gap-2.5">
-            <div className="flex items-center gap-3 p-2.5 bg-gray-50 rounded-md">
-              <FaEnvelope size={14} className="text-gray-400" />
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-md">
+              <FaEnvelope size={13} className="text-gray-400 shrink-0" />
               <span className="text-sm text-gray-700 truncate">{user?.email}</span>
             </div>
-            <div className="flex items-center gap-3 p-2.5 bg-gray-50 rounded-md">
-              <FaIdBadge size={14} className="text-gray-400" />
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-md">
+              <FaIdBadge size={13} className="text-gray-400 shrink-0" />
               <span className="text-sm text-gray-700">{user?.id}</span>
             </div>
           </div>
         </Card>
 
+        {/* Details Column */}
         <div className="lg:col-span-2 flex flex-col gap-6">
-          <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
-            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2">
-              <FaUser size={16} />
+          {/* Personal Details */}
+          <Card className="p-6">
+            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
+              <FaUser size={15} className="text-gray-400" />
               Personal Details
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-3 bg-gray-50 rounded-md">
-                <label className="text-xs text-gray-500 font-medium">Employee ID</label>
+                <p className="text-xs text-gray-500 font-medium mb-0.5">Employee ID</p>
                 <p className="text-sm font-medium text-gray-900">{user?.id}</p>
               </div>
               <div className="p-3 bg-gray-50 rounded-md">
-                <label className="text-xs text-gray-500 font-medium">Join Date</label>
+                <p className="text-xs text-gray-500 font-medium mb-0.5">Join Date</p>
                 <p className="text-sm font-medium text-gray-900">{user?.joinDate}</p>
               </div>
               {isEditing ? (
                 <>
-                  <Input label="Phone" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} icon={<FaPhone size={14} />} />
-                  <Input label="Address" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} icon={<FaMapMarkerAlt size={14} />} />
+                  <Input label="Phone" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} icon={<FaPhone size={13} />} />
+                  <Input label="Address" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} icon={<FaMapMarkerAlt size={13} />} />
                 </>
               ) : (
                 <>
                   <div className="p-3 bg-gray-50 rounded-md">
-                    <label className="text-xs text-gray-500 font-medium">Phone</label>
+                    <p className="text-xs text-gray-500 font-medium mb-0.5">Phone</p>
                     <p className="text-sm font-medium text-gray-900">{user?.phone || <span className="text-gray-400 italic">Not provided</span>}</p>
                   </div>
                   <div className="p-3 bg-gray-50 rounded-md">
-                    <label className="text-xs text-gray-500 font-medium">Address</label>
+                    <p className="text-xs text-gray-500 font-medium mb-0.5">Address</p>
                     <p className="text-sm font-medium text-gray-900">{user?.address || <span className="text-gray-400 italic">Not provided</span>}</p>
                   </div>
                 </>
@@ -108,37 +115,40 @@ const Profile = () => {
             )}
           </Card>
 
-          <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
-            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2">
-              <FaBriefcase size={16} />
+          {/* Job Details */}
+          <Card className="p-6">
+            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
+              <FaBriefcase size={15} className="text-gray-400" />
               Job Details
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-3 bg-gray-50 rounded-md">
-                <label className="text-xs text-gray-500 font-medium">Department</label>
+                <p className="text-xs text-gray-500 font-medium mb-0.5">Department</p>
                 <p className="text-sm font-medium text-gray-900">{user?.department}</p>
               </div>
               <div className="p-3 bg-gray-50 rounded-md">
-                <label className="text-xs text-gray-500 font-medium">Position</label>
+                <p className="text-xs text-gray-500 font-medium mb-0.5">Position</p>
                 <p className="text-sm font-medium text-gray-900">{user?.position}</p>
               </div>
             </div>
           </Card>
 
-          <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
-            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2">
-              <FaDollarSign size={16} />
+          {/* Salary */}
+          <Card className="p-6">
+            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
+              <FaDollarSign size={15} className="text-gray-400" />
               Salary Information
             </h3>
-            <div className="p-4 bg-emerald-50 rounded-md border border-emerald-200">
-              <label className="text-xs text-emerald-600 font-medium">Annual Salary</label>
-              <p className="text-2xl font-semibold text-emerald-700">${user?.salary?.toLocaleString()}</p>
+            <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200">
+              <p className="text-xs text-emerald-600 font-medium mb-1">Annual Salary</p>
+              <p className="text-2xl font-bold text-emerald-700">${user?.salary?.toLocaleString()}</p>
             </div>
           </Card>
 
-          <Card className="p-4 rounded-lg flex flex-col gap-4 h-full">
-            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2">
-              <FaFileAlt size={16} />
+          {/* Documents */}
+          <Card className="p-6">
+            <h3 className="text-base font-semibold text-gray-900 flex items-center gap-2 mb-4">
+              <FaFileAlt size={15} className="text-gray-400" />
               Documents
             </h3>
             {user?.documents?.length > 0 ? (
@@ -146,7 +156,7 @@ const Profile = () => {
                 {user.documents.map((doc, index) => (
                   <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
                     <div className="flex items-center gap-3">
-                      <FaFileAlt size={16} className="text-gray-400" />
+                      <FaFileAlt size={14} className="text-gray-400 shrink-0" />
                       <div>
                         <p className="text-sm font-medium text-gray-900">{doc.name}</p>
                         <p className="text-xs text-gray-500">Uploaded: {doc.uploaded}</p>
@@ -157,8 +167,8 @@ const Profile = () => {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 bg-gray-50 rounded-md">
-                <FaFileAlt size={28} className="text-gray-300 mx-auto mb-2" />
+              <div className="text-center py-8 bg-gray-50 rounded-lg">
+                <FaFileAlt size={24} className="text-gray-300 mx-auto mb-2" />
                 <p className="text-sm text-gray-500">No documents uploaded</p>
               </div>
             )}
