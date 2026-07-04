@@ -91,20 +91,20 @@ Netlify
 
 Make sure to add environment variables in deployment settings.
 
-🎯 Future Improvements
+##🎯 Future Improvements
 Payroll system 💰
 Leave management 📄
 Notifications 🔔
 Charts & analytics 📈
 Dark mode 🌙
-🧠 UI/UX Goals
+##🧠 UI/UX Goals
 Minimalist design
 Clean alignment & spacing
 Professional SaaS dashboard feel
-🤝 Contributing
+##🤝 Contributing
 
 Pull requests are welcome. For major changes, open an issue first.
 
-📄 License
+##📄 License
 
 This project is licensed under the MIT License.
