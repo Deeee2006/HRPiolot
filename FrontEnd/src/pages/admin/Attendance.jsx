@@ -159,7 +159,7 @@ const AdminAttendance = () => {
                 <tr key={employee.id} className="border-b border-purple-50/60 hover:bg-purple-50/40 transition-colors">
                   <td className="py-4 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm shadow-[0_4px_8px_rgba(147,51,234,0.2)]">
+                      <div className="w-9 h-9 rounded-xl bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm shadow-[0_4px_8px_rgba(147,51,234,0.2)]">
                         {employee.name.charAt(0)}
                       </div>
                       <div>

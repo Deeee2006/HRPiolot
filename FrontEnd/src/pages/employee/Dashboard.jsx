@@ -73,7 +73,7 @@ const EmployeeDashboard = () => {
             className="p-5 group cursor-pointer hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] transition-all duration-300"
             onClick={card.onClick}
           >
-            <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${card.gradient} flex items-center justify-center text-white mb-3 shadow-[0_4px_12px_${card.shadow}]`}>
+            <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${card.gradient} flex items-center justify-center text-white mb-3 shadow-[0_4px_12px_${card.shadow}]`}>
               <card.icon size={20} />
             </div>
             <h3 className="text-base font-bold text-purple-800 mb-1">{card.title}</h3>

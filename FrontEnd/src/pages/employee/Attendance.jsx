@@ -68,7 +68,7 @@ const Attendance = () => {
       <Card className="p-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white shadow-[0_8px_16px_rgba(147,51,234,0.25)]">
+            <div className="w-14 h-14 rounded-xl bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white shadow-[0_8px_16px_rgba(147,51,234,0.25)]">
               <FaClock size={28} />
             </div>
             <div>
@@ -78,11 +78,11 @@ const Attendance = () => {
           </div>
           <div className="flex gap-3">
             {!isCheckedIn ? (
-              <Button onClick={handleCheckIn} size="lg" className="min-w-[140px]">
+              <Button onClick={handleCheckIn} size="lg" className="min-w-35">
                 Check In
               </Button>
             ) : (
-              <Button onClick={handleCheckOut} variant="danger" size="lg" className="min-w-[140px]">
+              <Button onClick={handleCheckOut} variant="danger" size="lg" className="min-w-35">
                 Check Out
               </Button>
             )}

@@ -35,7 +35,7 @@ const AdminDashboard = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, i) => (
           <Card key={i} className="p-5 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] transition-all duration-300">
-            <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center text-white mb-3 shadow-[0_4px_12px_${stat.shadow}]`}>
+            <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${stat.gradient} flex items-center justify-center text-white mb-3 shadow-[0_4px_12px_${stat.shadow}]`}>
               <stat.icon size={20} />
             </div>
             <p className="text-xl font-bold text-purple-800">{stat.value}</p>
@@ -78,7 +78,7 @@ const AdminDashboard = () => {
                   <span className="text-xs text-purple-400">{dept.count} employees</span>
                 </div>
                 <div className="w-full bg-purple-100/60 rounded-full h-2">
-                  <div className="bg-gradient-to-r from-purple-400 to-pink-400 h-2 rounded-full transition-all duration-500"
+                  <div className="bg-linear-to-r from-purple-400 to-pink-400 h-2 rounded-full transition-all duration-500"
                     style={{ width: `${dept.pct}%` }} />
                 </div>
               </div>
@@ -133,7 +133,7 @@ const AdminDashboard = () => {
                 <tr key={employee.id} className="border-b border-purple-50/60 hover:bg-purple-50/40 transition-colors">
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white text-sm font-bold">
+                      <div className="w-8 h-8 rounded-full bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white text-sm font-bold">
                         {employee.name.charAt(0)}
                       </div>
                       <div>

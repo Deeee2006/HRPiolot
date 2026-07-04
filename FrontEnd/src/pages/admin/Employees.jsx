@@ -45,7 +45,7 @@ const Employees = () => {
             <select
               value={selectedDepartment}
               onChange={(e) => setSelectedDepartment(e.target.value)}
-              className="pl-10 pr-8 py-2.5 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-purple-200/60 text-purple-900 focus:outline-none focus:border-purple-400 transition-all duration-300 appearance-none glass-select text-sm min-w-[160px]"
+              className="pl-10 pr-8 py-2.5 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-purple-200/60 text-purple-900 focus:outline-none focus:border-purple-400 transition-all duration-300 appearance-none glass-select text-sm min-w-40"
             >
               {departments.map(dept => (
                 <option key={dept} value={dept}>{dept}</option>
@@ -71,7 +71,7 @@ const Employees = () => {
                 <tr key={employee.id} className="border-b border-purple-50/60 hover:bg-purple-50/40 transition-colors">
                   <td className="py-4 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold shadow-[0_4px_8px_rgba(147,51,234,0.2)]">
+                      <div className="w-10 h-10 rounded-xl bg-linear-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold shadow-[0_4px_8px_rgba(147,51,234,0.2)]">
                         {employee.name.charAt(0)}
                       </div>
                       <div>
