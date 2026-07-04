@@ -4,8 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import Card from '../../components/Card';
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaIdBadge } from 'react-icons/fa';
+import { LuMail, LuLock, LuEye, LuEyeOff, LuIdCard, LuBuilding, LuUsers, LuCalendarCheck, LuShield, LuUserPlus, LuChevronDown } from 'react-icons/lu';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -55,109 +54,204 @@ const Signup = () => {
     setErrors({ ...errors, [e.target.name]: '', form: '' });
   };
 
+  const features = [
+    { icon: <LuBuilding size={18} />, text: 'Smart Dashboard' },
+    { icon: <LuUsers size={18} />, text: 'Employee Management' },
+    { icon: <LuCalendarCheck size={18} />, text: 'Leave Tracking' },
+    { icon: <LuShield size={18} />, text: 'Role-Based Access' },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 flex relative overflow-hidden">
+      {/* Decorative blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-purple-200/30 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-pink-200/30 blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-purple-200/25 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-pink-200/25 blur-3xl" />
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-blue-200/15 blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/3 w-48 h-48 rounded-full bg-purple-300/15 blur-3xl" />
       </div>
-      <Card className="w-full max-w-md p-8 relative animate-scaleIn">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4 shadow-[0_8px_24px_rgba(147,51,234,0.3)] animate-float">
-            <span className="text-2xl font-extrabold text-white">H</span>
-          </div>
-          <h1 className="text-3xl font-extrabold gradient-text mb-1">HRPilot</h1>
-          <p className="text-purple-500 text-sm font-medium">Create your account</p>
-        </div>
 
-        {errors.form && (
-          <div className="mb-4 p-3.5 bg-red-100/80 backdrop-blur-sm border border-red-200 text-red-700 rounded-xl text-sm font-medium flex items-center gap-2 animate-fadeIn">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/>
-              <path d="M8 4.5V8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-              <path d="M8 11V11.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
-            {errors.form}
+      {/* Left: Branding */}
+      <div className="hidden lg:flex w-1/2 min-h-screen relative items-center justify-center p-12">
+        <div className="max-w-md animate-fadeIn">
+          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6 shadow-[0_12px_36px_rgba(147,51,234,0.35)] animate-float">
+            <span className="text-3xl font-extrabold text-white">H</span>
           </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <Input
-            label="Employee ID"
-            name="employeeId"
-            type="text"
-            placeholder="Enter your employee ID"
-            value={formData.employeeId}
-            onChange={handleChange}
-            error={errors.employeeId}
-            icon={<FaIdBadge size={14} />}
-          />
-          <Input
-            label="Email"
-            name="email"
-            type="email"
-            placeholder="Enter your email"
-            value={formData.email}
-            onChange={handleChange}
-            error={errors.email}
-            icon={<FaEnvelope size={15} />}
-          />
-          <div className="space-y-1.5">
-            <Input
-              label="Password"
-              name="password"
-              type={showPassword ? 'text' : 'password'}
-              placeholder="Create a password"
-              value={formData.password}
-              onChange={handleChange}
-              error={errors.password}
-              icon={<FaLock size={15} />}
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="text-xs text-purple-500 hover:text-purple-700 font-medium transition-colors flex items-center gap-1 ml-1"
-            >
-              {showPassword ? <FaEyeSlash size={12} /> : <FaEye size={12} />}
-              {showPassword ? 'Hide' : 'Show'}
-            </button>
-          </div>
-          <Input
-            label="Confirm Password"
-            name="confirmPassword"
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Confirm your password"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            error={errors.confirmPassword}
-            icon={<FaLock size={15} />}
-          />
-          <div className="space-y-2">
-            <label className="text-sm font-semibold text-purple-700">Role</label>
-            <div className="relative">
-              <select
-                name="role"
-                value={formData.role}
-                onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-purple-200/60 text-purple-900 focus:outline-none focus:border-purple-400 focus:shadow-[0_4px_16px_rgba(147,51,234,0.1)] transition-all duration-300 appearance-none glass-select"
+          <h1 className="text-4xl font-extrabold gradient-text mb-3">HRPilot</h1>
+          <p className="text-purple-500/80 text-lg leading-relaxed mb-10">
+            Join the platform that makes HR management effortless and efficient.
+          </p>
+          <div className="space-y-4">
+            {features.map((feature, i) => (
+              <div
+                key={feature.text}
+                className="flex items-center gap-3 text-purple-700 animate-slideUpFade"
+                style={{ animationDelay: `${i * 0.1}s` }}
               >
-                <option value="employee">Employee</option>
-                <option value="admin">Admin</option>
-              </select>
-            </div>
+                <div className="w-10 h-10 rounded-xl bg-white/70 backdrop-blur-sm flex items-center justify-center text-purple-500 shadow-[0_2px_8px_rgba(147,51,234,0.08)]">
+                  {feature.icon}
+                </div>
+                <span className="font-medium">{feature.text}</span>
+              </div>
+            ))}
           </div>
-          <Button type="submit" className="w-full" size="lg" loading={isLoading}>
-            {isLoading ? 'Creating Account...' : 'Sign Up'}
-          </Button>
-        </form>
+          <div className="mt-10 p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-purple-200/30">
+            <p className="text-xs text-purple-500 font-semibold">Start your free trial today</p>
+            <p className="text-xs text-purple-400 mt-0.5">No credit card required. Full access.</p>
+          </div>
+        </div>
+      </div>
 
-        <p className="text-center mt-6 text-purple-500 text-sm">
-          Already have an account?{' '}
-          <Link to="/login" className="font-semibold text-purple-700 hover:text-purple-900 hover:underline transition-colors">
-            Sign In
-          </Link>
-        </p>
-      </Card>
+      {/* Right: Form */}
+      <div className="w-full lg:w-1/2 min-h-screen flex items-center justify-center p-4 sm:p-8">
+        <div className="w-full max-w-md animate-scaleIn">
+          {/* Mobile logo */}
+          <div className="text-center lg:hidden mb-6">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-3 shadow-[0_8px_24px_rgba(147,51,234,0.3)]">
+              <span className="text-xl font-extrabold text-white">H</span>
+            </div>
+            <h1 className="text-2xl font-extrabold gradient-text">HRPilot</h1>
+          </div>
+
+          <div className="clay-card p-8 sm:p-10">
+            <div className="mb-7">
+              <h2 className="text-2xl font-extrabold text-purple-900">Create account</h2>
+              <p className="text-purple-500 text-sm mt-1">Fill in your details to get started</p>
+            </div>
+
+            {errors.form && (
+              <div className="mb-5 p-3.5 bg-red-100/80 backdrop-blur-sm border border-red-200 text-red-700 rounded-xl text-sm font-medium flex items-center gap-2.5 animate-shake">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+                  <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/>
+                  <path d="M8 4.5V8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  <path d="M8 11V11.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+                <span>{errors.form}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+              <div className="animate-slideUpFade delay-1">
+                <Input
+                  label="Employee ID"
+                  name="employeeId"
+                  type="text"
+                  value={formData.employeeId}
+                  onChange={handleChange}
+                  error={errors.employeeId}
+                  icon={<LuIdCard size={16} />}
+                  floating
+                />
+              </div>
+              <div className="animate-slideUpFade delay-2">
+                <Input
+                  label="Email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  error={errors.email}
+                  icon={<LuMail size={16} />}
+                  floating
+                  autoComplete="email"
+                />
+              </div>
+              <div className="animate-slideUpFade delay-3">
+                <Input
+                  label="Password"
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={formData.password}
+                  onChange={handleChange}
+                  error={errors.password}
+                  icon={<LuLock size={16} />}
+                  floating
+                  autoComplete="new-password"
+                  rightElement={
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="text-purple-400 hover:text-purple-600 transition-colors p-1"
+                      tabIndex={-1}
+                      aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    >
+                      {showPassword ? <LuEyeOff size={17} /> : <LuEye size={17} />}
+                    </button>
+                  }
+                />
+              </div>
+              <div className="animate-slideUpFade delay-4">
+                <Input
+                  label="Confirm Password"
+                  name="confirmPassword"
+                  type={showPassword ? 'text' : 'password'}
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  error={errors.confirmPassword}
+                  icon={<LuLock size={16} />}
+                  floating
+                  autoComplete="new-password"
+                />
+              </div>
+
+              <div className="animate-slideUpFade delay-5">
+                <div className="flex flex-col gap-1">
+                  <label className="text-sm font-semibold text-purple-700">Role</label>
+                  <div className="relative">
+                    <LuShield size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400 pointer-events-none" />
+                    <LuChevronDown size={16} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-purple-400 pointer-events-none" />
+                    <select
+                      name="role"
+                      value={formData.role}
+                      onChange={handleChange}
+                      className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-purple-200/60 text-purple-900 focus:outline-none focus:border-purple-400 focus:shadow-[0_4px_16px_rgba(147,51,234,0.1)] focus:bg-white/80 transition-all duration-300 appearance-none cursor-pointer"
+                    >
+                      <option value="employee">Employee</option>
+                      <option value="admin">Admin</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="animate-slideUpFade delay-6 pt-1">
+                <Button
+                  type="submit"
+                  className="w-full"
+                  size="lg"
+                  loading={isLoading}
+                  disabled={isLoading}
+                >
+                  {isLoading ? 'Creating Account...' : 'Create Account'}
+                  {!isLoading && <LuUserPlus size={18} />}
+                </Button>
+              </div>
+            </form>
+
+            <div className="mt-6 animate-slideUpFade delay-7">
+              <div className="divider-text justify-center mb-4">
+                <span>or sign up with</span>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <button type="button" className="social-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                  Google
+                </button>
+                <button type="button" className="social-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  GitHub
+                </button>
+              </div>
+            </div>
+
+            <p className="text-center mt-6 text-purple-500 text-sm animate-fadeIn delay-8">
+              Already have an account?{' '}
+              <Link to="/login" className="font-semibold text-purple-700 hover:text-purple-900 transition-colors">
+                Sign In
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
